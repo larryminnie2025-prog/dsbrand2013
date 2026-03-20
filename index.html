@@ -4,250 +4,291 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DS Brand | Est. 2013 | XIV:VIII</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gold:#c9a840;--gdim:#8a6f20;--bg:#060503;--bg2:#0d0b06;
-  --bdr:#1e1a10;--txt:#f0e8d8;--dim:#b8986a;--mut:#6a5a38;
-  --gst:#3a3020;--grn:#40c080;--red:#e05050;
+  --gold:#d4af50;--gdim:#a07828;--gold-light:#e8cc80;
+  --bg:#04030200;background-color:#040302;
+  --bg:#040302;--bg2:#0a0906;--bg3:#100e08;
+  --bdr:#28200e;--bdr2:#382e16;
+  --txt:#f8f0e0;--txt2:#e8d8c0;--dim:#c8a868;
+  --mut:#806848;--gst:#504028;
+  --grn:#4ab87a;--red:#d05050;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'EB Garamond',Georgia,serif;min-height:100vh}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:var(--gdim);border-radius:2px}
+body{background:var(--bg);color:var(--txt);font-family:'EB Garamond',Georgia,serif;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gdim);border-radius:2px}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(-5deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(5deg)}50%{transform:translateY(-10px) rotate(5deg)}}
+@keyframes glow{0%,100%{opacity:.04}50%{opacity:.09}}
+
+/* SVG CROSS ICON */
+.cross-icon{display:inline-block;vertical-align:middle}
 
 /* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(6,5,3,.95);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--bdr);
-  padding:12px 20px;display:flex;align-items:center;justify-content:space-between;
-}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
-.logo-sq{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gdim));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--bg)}
-.logo-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:5px;color:var(--gold)}
-.logo-est{font-size:8px;letter-spacing:2px;color:var(--mut);text-transform:uppercase}
-.nav-links{display:flex;gap:16px;align-items:center}
-.nav-a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;color:var(--mut);cursor:pointer;text-transform:uppercase;transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(4,3,2,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr)}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer}
+.logo-sq{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gdim));border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--bg)}
+.logo-name{font-family:'Cinzel',serif;font-size:13px;letter-spacing:6px;color:var(--gold)}
+.logo-est{font-size:8px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-top:1px;font-weight:600}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--txt2);cursor:pointer;text-transform:uppercase;transition:color .2s}
 .nav-a:hover{color:var(--gold)}
-.nav-shop{padding:7px 15px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:2px;cursor:pointer}
-.hamburger{display:none;background:none;border:1px solid rgba(201,168,64,.3);border-radius:4px;color:var(--gold);font-size:16px;padding:4px 8px;cursor:pointer}
+.nav-shop{padding:8px 18px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:opacity .2s}
+.nav-shop:hover{opacity:.88}
+.hamburger{display:none;background:none;border:1px solid rgba(212,175,80,.3);border-radius:4px;color:var(--gold);font-size:16px;padding:4px 9px;cursor:pointer}
 
 /* HERO */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:100px 20px 60px;position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 30% 20%,rgba(201,168,64,.07) 0%,transparent 55%),
-             radial-gradient(ellipse at 70% 80%,rgba(201,168,64,.04) 0%,transparent 50%);
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(201,168,64,.025) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(201,168,64,.025) 1px,transparent 1px);
-  background-size:60px 60px;
-}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 70px;position:relative;overflow:hidden}
+
+/* Hero background layers */
+.hero-bg-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 40%,rgba(212,175,80,.09) 0%,transparent 50%),radial-gradient(ellipse at 75% 60%,rgba(212,175,80,.06) 0%,transparent 45%),radial-gradient(ellipse at 50% 10%,rgba(212,175,80,.05) 0%,transparent 40%);pointer-events:none}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,80,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,80,.035) 1px,transparent 1px);background-size:70px 70px;pointer-events:none}
+.hero-bg-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(212,175,80,.12) 1px,transparent 1px);background-size:70px 70px;background-position:35px 35px;pointer-events:none}
+
+/* Hero SVG warrior decorations */
+.hero-deco-left{position:absolute;left:3%;top:50%;transform:translateY(-50%);opacity:.05;width:clamp(80px,10vw,160px);animation:float 6s ease infinite;pointer-events:none}
+.hero-deco-right{position:absolute;right:3%;top:45%;transform:translateY(-50%);opacity:.05;width:clamp(70px,9vw,140px);animation:float2 7s ease infinite;pointer-events:none}
+.hero-deco-top{position:absolute;top:12%;left:50%;transform:translateX(-50%);opacity:.04;width:clamp(40px,5vw,80px);pointer-events:none}
+
 .hero-content{position:relative;z-index:1}
-.hero-tag{font-size:9px;letter-spacing:6px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:16px;animation:fadeUp .8s ease both}
-.hero-xiv{
-  font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(52px,12vw,120px);
-  color:transparent;
-  background:linear-gradient(135deg,var(--gold) 0%,#e8c96a 40%,var(--gdim) 70%,var(--gold) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;background-clip:text;
-  animation:fadeUp .8s .1s ease both,shimmer 4s linear infinite;
-  line-height:1;margin-bottom:12px;
-}
-.hero-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 16px;animation:fadeUp .8s .2s ease both}
-.hero-brand{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,48px);color:var(--txt);letter-spacing:8px;animation:fadeUp .8s .3s ease both;margin-bottom:10px}
-.hero-sub{font-size:clamp(13px,2vw,16px);color:var(--dim);font-style:italic;line-height:1.7;max-width:440px;margin:0 auto 28px;animation:fadeUp .8s .4s ease both}
-.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .5s ease both}
-.btn-gold{padding:12px 28px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:6px;color:var(--bg);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:opacity .2s}
-.btn-gold:hover{opacity:.9}
-.btn-outline{padding:12px 28px;background:transparent;border:1px solid rgba(201,168,64,.35);border-radius:6px;color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;cursor:pointer;transition:all .2s}
-.btn-outline:hover{border-color:var(--gold);background:rgba(201,168,64,.06)}
+.hero-est{font-size:10px;letter-spacing:7px;color:var(--dim);text-transform:uppercase;font-family:'Cinzel',serif;font-weight:700;margin-bottom:18px;animation:fadeUp .9s ease both}
+.hero-xiv{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(56px,13vw,130px);color:transparent;background:linear-gradient(135deg,var(--gdim) 0%,var(--gold) 30%,var(--gold-light) 55%,var(--gold) 75%,var(--gdim) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;animation:fadeUp .9s .1s ease both,shimmer 5s linear infinite;line-height:1;margin-bottom:14px}
+.hero-rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 20px;animation:fadeUp .9s .2s ease both}
+.hero-brand{font-family:'Cinzel',serif;font-size:clamp(26px,5.5vw,54px);color:var(--txt);letter-spacing:10px;text-transform:uppercase;animation:fadeUp .9s .3s ease both;margin-bottom:12px}
+.hero-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(15px,2.2vw,19px);color:var(--dim);font-style:italic;line-height:1.8;max-width:500px;margin:0 auto 32px;animation:fadeUp .9s .4s ease both}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp .9s .5s ease both}
+.btn-primary{padding:14px 32px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:6px;color:var(--bg);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all .25s;text-transform:uppercase}
+.btn-primary:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,80,.2)}
+.btn-outline{padding:14px 32px;background:transparent;border:1px solid rgba(212,175,80,.45);border-radius:6px;color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;cursor:pointer;transition:all .25s;text-transform:uppercase}
+.btn-outline:hover{border-color:var(--gold);background:rgba(212,175,80,.07)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:4px;color:var(--gst);text-transform:uppercase;font-family:'Cinzel',serif}
 
 /* STATS */
 .stats{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:32px 16px;text-align:center;border-right:1px solid var(--bdr)}
+.stat{padding:36px 16px;text-align:center;border-right:1px solid var(--bdr)}
 .stat:last-child{border-right:none}
-.stat-n{font-family:'Cinzel',serif;font-size:26px;color:var(--gold);margin-bottom:4px}
-.stat-l{font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif}
+.stat-n{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-l{font-size:8px;letter-spacing:4px;color:var(--dim);text-transform:uppercase;font-family:'Cinzel',serif;font-weight:600}
+
+/* WARRIOR BANNER */
+.warrior-banner{background:linear-gradient(135deg,var(--bg3),#1a1508,var(--bg3));border-top:1px solid rgba(212,175,80,.12);border-bottom:1px solid rgba(212,175,80,.12);padding:50px 24px;position:relative;overflow:hidden}
+.wb-glow{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,175,80,.05) 0%,transparent 65%);pointer-events:none}
+.wb-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.wb-rule-top{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:28px}
+.wb-line{flex:1;max-width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gdim))}
+.wb-cross{width:24px;height:24px;position:relative;flex-shrink:0}
+.wb-cross::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--gdim);transform:translateY(-50%)}
+.wb-cross::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--gdim);transform:translateX(-50%)}
+.wb-title{font-family:'Cinzel',serif;font-size:clamp(18px,3vw,28px);color:var(--txt);letter-spacing:5px;text-transform:uppercase;margin-bottom:10px}
+.wb-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,18px);color:var(--txt2);font-style:italic;line-height:1.9;max-width:600px;margin:0 auto 28px}
+.wb-cards{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.wb-card{background:rgba(212,175,80,.06);border:1px solid rgba(212,175,80,.18);border-radius:8px;padding:14px 22px;text-align:center;min-width:160px}
+.wb-card-icon{margin-bottom:8px}
+.wb-card-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.wb-card-desc{font-size:11px;color:var(--mut);line-height:1.5}
 
 /* SECTIONS */
-.section{padding:60px 20px}
-.sec-wrap{max-width:940px;margin:0 auto}
-.sec-tag{font-size:8px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;text-align:center;margin-bottom:8px}
-.sec-title{font-family:'Cinzel',serif;font-size:clamp(20px,3.5vw,30px);color:var(--txt);text-align:center;margin-bottom:6px}
+.section{padding:70px 24px}
+.sec-wrap{max-width:960px;margin:0 auto}
+.sec-label{font-size:9px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;text-align:center;margin-bottom:10px;font-weight:700}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(22px,3.8vw,34px);color:var(--txt);text-align:center;line-height:1.3;margin-bottom:8px}
 .sec-title span{color:var(--gold)}
-.sec-line{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 14px}
-.sec-sub{font-size:13px;color:var(--mut);text-align:center;line-height:1.8;max-width:480px;margin:0 auto 36px}
+.sec-rule{width:55px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 16px}
+.sec-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.8vw,17px);color:var(--dim);text-align:center;line-height:1.9;max-width:520px;margin:0 auto 40px;font-style:italic}
 
-/* COLLECTION */
-.col-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-.col-tab{padding:7px 16px;background:transparent;border:1px solid var(--bdr);border-radius:4px;color:var(--mut);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+/* COLLECTION TABS */
+.col-tabs{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.col-tab{padding:8px 18px;background:transparent;border:1px solid var(--bdr);border-radius:4px;color:var(--mut);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.col-tab:hover{border-color:rgba(212,175,80,.3);color:var(--dim)}
 .col-tab.on{background:linear-gradient(135deg,var(--gold),var(--gdim));border-color:var(--gold);color:var(--bg)}
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.prod-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:9px;overflow:hidden;cursor:pointer;transition:all .3s;animation:fadeUp .5s ease both}
-.prod-card:hover{border-color:rgba(201,168,64,.4);transform:translateY(-3px)}
-.prod-img{width:100%;aspect-ratio:1;background:linear-gradient(135deg,#111008,#1c1508);display:flex;align-items:center;justify-content:center;position:relative}
-.prod-img img{width:100%;height:100%;object-fit:cover}
-.prod-placeholder{text-align:center}
-.prod-cross{font-size:44px;color:rgba(201,168,64,.2);display:block;margin-bottom:5px}
-.prod-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:rgba(201,168,64,.35)}
-.prod-badge{position:absolute;top:8px;right:8px;background:linear-gradient(135deg,var(--gold),var(--gdim));color:var(--bg);font-family:'Cinzel',serif;font-size:6px;font-weight:700;letter-spacing:1px;padding:3px 7px;border-radius:3px}
-.prod-info{padding:12px}
-.prod-name{font-family:'Cinzel',serif;font-size:10px;color:var(--txt);margin-bottom:3px;letter-spacing:.5px}
-.prod-desc{font-size:10px;color:var(--mut);margin-bottom:6px;line-height:1.5}
-.prod-chips{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
-.chip{padding:2px 7px;background:var(--bg);border:1px solid var(--bdr);border-radius:3px;font-size:8px;color:var(--mut)}
-.prod-price{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);margin-bottom:7px}
-.prod-btn{width:100%;padding:8px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:8px;font-weight:700;letter-spacing:1px;cursor:pointer}
 
 /* PRINTFUL CONNECT */
-.pf-wrap{background:rgba(40,100,60,.15);border:1px solid rgba(64,192,128,.2);border-radius:10px;padding:16px;margin-bottom:20px;display:none}
+.pf-connect-btn{display:block;padding:10px 22px;background:transparent;border:1px solid rgba(74,184,122,.3);border-radius:6px;color:var(--grn);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;cursor:pointer;margin-bottom:20px;transition:all .2s}
+.pf-connect-btn:hover{background:rgba(74,184,122,.06);border-color:var(--grn)}
+.pf-wrap{background:rgba(74,184,122,.05);border:1px solid rgba(74,184,122,.18);border-radius:10px;padding:18px;margin-bottom:22px;display:none}
 .pf-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--grn);text-transform:uppercase;margin-bottom:6px}
-.pf-desc{font-size:12px;color:#60a878;line-height:1.6;margin-bottom:12px}
-.pf-row{display:flex;gap:7px;flex-wrap:wrap}
-.pf-inp{flex:1;min-width:180px;padding:10px 13px;background:#0a0904;border:1px solid rgba(64,192,128,.2);border-radius:6px;color:var(--txt);font-size:13px;font-family:'EB Garamond',serif;outline:none}
+.pf-desc{font-size:13px;color:#7ab890;line-height:1.7;margin-bottom:12px}
+.pf-row{display:flex;gap:8px;flex-wrap:wrap}
+.pf-inp{flex:1;min-width:200px;padding:11px 14px;background:#050806;border:1px solid rgba(74,184,122,.2);border-radius:6px;color:var(--txt);font-size:13px;font-family:'EB Garamond',serif;outline:none}
 .pf-inp:focus{border-color:var(--grn)}
 .pf-inp::placeholder{color:var(--gst)}
-.pf-btn{padding:10px 18px;background:linear-gradient(135deg,var(--grn),#208050);border:none;border-radius:6px;color:#000;font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.pf-btn{padding:11px 20px;background:linear-gradient(135deg,var(--grn),#288050);border:none;border-radius:6px;color:#000;font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap}
 .pf-err{font-size:11px;color:var(--red);margin-top:5px}
-.pf-ok{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--grn)}
+.pf-ok{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--grn)}
 .pf-dot{width:7px;height:7px;background:var(--grn);border-radius:50%;animation:pulse 2s infinite}
-.pf-connect-btn{padding:9px 18px;background:transparent;border:1px solid rgba(64,192,128,.3);border-radius:5px;color:var(--grn);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;cursor:pointer;margin-bottom:16px;display:block}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prod-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .3s;animation:fadeUp .5s ease both}
+.prod-card:hover{border-color:rgba(212,175,80,.4);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.prod-img{width:100%;aspect-ratio:1;background:linear-gradient(150deg,#0d0b06,#1a1508,#0d0b06);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:cover}
+
+/* Product placeholder — real CSS cross design */
+.prod-placeholder{text-align:center;padding:20px}
+.prod-cross-wrap{width:60px;height:60px;position:relative;margin:0 auto 14px}
+.prod-cross-h{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,rgba(212,175,80,.3),transparent);transform:translateY(-50%);border-radius:2px}
+.prod-cross-v{position:absolute;left:50%;top:0;bottom:0;width:4px;background:linear-gradient(180deg,transparent,rgba(212,175,80,.3),transparent);transform:translateX(-50%);border-radius:2px}
+.prod-ref-text{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;color:rgba(212,175,80,.35);text-transform:uppercase}
+.prod-badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,var(--gold),var(--gdim));color:var(--bg);font-family:'Cinzel',serif;font-size:7px;font-weight:700;letter-spacing:1px;padding:4px 9px;border-radius:3px}
+.prod-badge.new-drop{background:linear-gradient(135deg,var(--grn),#288050);color:#000}
+
+.prod-info{padding:14px 14px 16px}
+.prod-name{font-family:'Cinzel',serif;font-size:11px;color:var(--txt);margin-bottom:4px;letter-spacing:.5px;line-height:1.3}
+.prod-desc{font-size:12px;color:var(--dim);margin-bottom:8px;line-height:1.6}
+.prod-chips{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.chip{padding:2px 8px;background:var(--bg);border:1px solid var(--bdr2);border-radius:3px;font-size:8px;color:var(--dim);letter-spacing:.5px}
+.prod-price{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);margin-bottom:10px;letter-spacing:.5px}
+.prod-price span{font-size:10px;color:var(--mut);font-family:'EB Garamond',serif}
+.prod-btn{width:100%;padding:10px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:8px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:opacity .2s;text-transform:uppercase}
+.prod-btn:hover{opacity:.88}
+.prod-btn.ghost{background:transparent;border:1px solid rgba(212,175,80,.35);color:var(--gold)}
+.prod-btn.ghost:hover{background:rgba(212,175,80,.07)}
 
 /* STORY */
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.story-year{font-family:'Cinzel',serif;font-size:64px;color:transparent;background:linear-gradient(135deg,var(--gold),var(--gdim));-webkit-background-clip:text;background-clip:text;line-height:1;margin-bottom:6px}
-.story-p{font-size:14px;color:var(--dim);line-height:1.9;margin-bottom:12px}
-.story-p strong{color:var(--gold)}
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
-.pillar{background:var(--bg2);border:1px solid var(--bdr);border-radius:7px;padding:12px;text-align:center}
-.pillar-i{font-size:18px;margin-bottom:4px}
-.pillar-n{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
-.pillar-d{font-size:9px;color:var(--mut);line-height:1.4}
-.story-badge{width:100%;max-width:280px;aspect-ratio:.85;background:linear-gradient(135deg,#111008,#1c1608);border:1px solid rgba(201,168,64,.12);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;margin:0 auto}
-.sb-xiv{font-family:'Cinzel',serif;font-size:24px;color:transparent;background:linear-gradient(135deg,var(--gold),var(--gdim));-webkit-background-clip:text;background-clip:text}
-.sb-line{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;color:rgba(201,168,64,.4)}
-.sb-div{width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story-year{font-family:'Cinzel',serif;font-size:72px;color:transparent;background:linear-gradient(135deg,var(--gold),var(--gdim));-webkit-background-clip:text;background-clip:text;line-height:1;margin-bottom:6px}
+.story-label{font-size:8px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:18px}
+.story-p{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--txt2);line-height:2;margin-bottom:16px}
+.story-p strong{color:var(--txt2);font-weight:500}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.pillar{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;padding:16px 14px;text-align:center;transition:border-color .2s}
+.pillar:hover{border-color:rgba(212,175,80,.25)}
+.pillar-icon{margin-bottom:8px}
+.pillar-n{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.pillar-d{font-size:11px;color:var(--mut);line-height:1.5}
+
+/* Story visual — pure CSS design */
+.story-visual{width:100%;max-width:300px;aspect-ratio:.85;background:linear-gradient(150deg,#0d0b06,#1c1808,#0d0b06);border:1px solid rgba(212,175,80,.1);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;margin:0 auto;position:relative;overflow:hidden}
+.sv-glow{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,175,80,.06) 0%,transparent 65%);pointer-events:none}
+.sv-cross{width:48px;height:48px;position:relative;margin:0 auto}
+.sv-cross-h{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:translateY(-50%);border-radius:2px}
+.sv-cross-v{position:absolute;left:50%;top:0;bottom:0;width:4px;background:linear-gradient(180deg,transparent,var(--gold),transparent);transform:translateX(-50%);border-radius:2px}
+.sv-xiv{font-family:'Cinzel',serif;font-size:22px;color:transparent;background:linear-gradient(135deg,var(--gold),var(--gdim));-webkit-background-clip:text;background-clip:text;letter-spacing:2px}
+.sv-line{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;color:rgba(212,175,80,.45);text-transform:uppercase}
+.sv-rule{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sv-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:7px;color:var(--gold)}
 
 /* AGENT */
-.agent-box{background:var(--bg);border:1px solid var(--bdr);border-radius:11px;overflow:hidden}
-.agent-hdr{background:linear-gradient(135deg,#1a1208,#0d0b06);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr)}
-.agent-logo{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gdim));border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--bg)}
-.agent-name{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:3px}
-.agent-sub2{font-size:7px;color:var(--mut);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
-.online{display:flex;align-items:center;gap:5px;font-size:9px;color:var(--grn);font-family:'Cinzel',serif}
-.on-dot{width:6px;height:6px;background:var(--grn);border-radius:50%;animation:pulse 2s infinite}
+.agent-box{background:var(--bg);border:1px solid var(--bdr);border-radius:12px;overflow:hidden}
+.agent-hdr{background:linear-gradient(135deg,#1a1508,#0e0c06);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr)}
+.agent-logo{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gdim));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--bg)}
+.agent-name{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:3px}
+.agent-sub2{font-size:7px;color:var(--mut);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.online{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--grn);font-family:'Cinzel',serif;letter-spacing:1px}
+.on-dot{width:7px;height:7px;background:var(--grn);border-radius:50%;animation:pulse 2s infinite}
 
 /* KEY ZONE */
-.key-zone{padding:20px;border-bottom:1px solid var(--bdr)}
-.kz-title{font-family:'Cinzel',serif;font-size:12px;color:var(--txt);margin-bottom:5px}
-.kz-desc{font-size:12px;color:var(--mut);line-height:1.7;margin-bottom:10px}
-.kz-how{background:#0a0804;border:1px solid var(--bdr);border-radius:6px;padding:9px 12px;margin-bottom:10px;font-size:11px;color:var(--dim);line-height:1.7}
+.key-zone{padding:22px}
+.kz-title{font-family:'Cinzel',serif;font-size:13px;color:var(--txt);margin-bottom:6px}
+.kz-desc{font-size:13px;color:var(--dim);line-height:1.8;margin-bottom:12px}
+.kz-how{background:#0a0804;border:1px solid var(--bdr);border-radius:7px;padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--dim);line-height:1.8}
 .kz-how a{color:var(--gold);text-decoration:none;font-weight:600}
-.kz-row{display:flex;gap:7px;flex-wrap:wrap}
-.kz-inp{flex:1;min-width:180px;padding:10px 12px;background:#0a0804;border:1px solid var(--bdr);border-radius:6px;color:var(--txt);font-size:13px;font-family:'EB Garamond',serif;outline:none}
+.kz-how strong{color:var(--txt2)}
+.kz-row{display:flex;gap:8px;flex-wrap:wrap}
+.kz-inp{flex:1;min-width:200px;padding:12px 14px;background:#0a0804;border:1px solid var(--bdr2);border-radius:7px;color:var(--txt);font-size:13px;font-family:'EB Garamond',serif;outline:none}
 .kz-inp:focus{border-color:var(--gold)}
 .kz-inp::placeholder{color:var(--gst)}
-.kz-btn{padding:10px 18px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:6px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap}
-.kz-err{font-size:11px;color:var(--red);margin-top:5px;min-height:15px}
+.kz-btn{padding:12px 20px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:7px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.kz-btn:hover{opacity:.88}
+.kz-err{font-size:11px;color:var(--red);margin-top:6px;min-height:16px}
 
 /* TOOLS */
-.tools-zone{padding:16px 20px;display:none}
-.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-.tc{background:#0a0804;border:1px solid var(--bdr);border-radius:7px;padding:11px 6px;text-align:center;cursor:pointer;transition:all .2s}
-.tc:hover{border-color:rgba(201,168,64,.3)}
-.tc.on{background:#1a1208;border-color:rgba(201,168,64,.5)}
-.tc.done{border-color:rgba(201,168,64,.25)}
-.tc-i{font-size:16px;margin-bottom:4px;color:var(--mut)}
+.tools-zone{padding:18px 22px;display:none}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px}
+.tc{background:#0a0804;border:1px solid var(--bdr);border-radius:8px;padding:13px 8px;text-align:center;cursor:pointer;transition:all .2s}
+.tc:hover{border-color:rgba(212,175,80,.3);background:#0f0d08}
+.tc.on{background:#1a1508;border-color:rgba(212,175,80,.5)}
+.tc.done{border-color:rgba(212,175,80,.25)}
+.tc-i{font-size:15px;margin-bottom:5px;color:var(--mut);font-family:'Cinzel',serif;font-weight:700}
 .tc.on .tc-i,.tc.done .tc-i{color:var(--gold)}
-.tc-n{font-size:8px;color:var(--mut);font-family:'Cinzel',serif;line-height:1.3}
+.tc-n{font-size:8px;color:var(--mut);font-family:'Cinzel',serif;line-height:1.4;letter-spacing:.3px}
 .tc.on .tc-n,.tc.done .tc-n{color:var(--gold)}
-.tc-ck{font-size:8px;color:var(--gold);margin-top:2px}
-.chg-key{font-size:8px;color:var(--mut);background:none;border:none;cursor:pointer;font-family:'EB Garamond',serif;text-decoration:underline;float:right}
+.tc-ck{font-size:9px;color:var(--grn);margin-top:3px}
+.chg-key{font-size:9px;color:var(--mut);background:none;border:none;cursor:pointer;font-family:'EB Garamond',serif;text-decoration:underline;float:right}
 
 /* RESULT */
-.result-zone{border-top:1px solid var(--bdr);padding:16px 20px;display:none}
-.rz-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:7px}
-.rz-title{font-family:'Cinzel',serif;font-size:13px;color:var(--txt)}
-.rz-title span{color:var(--gold);margin-right:6px}
-.rz-btns{display:flex;gap:6px}
-.rz-run{padding:8px 16px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer}
-.rz-rerun{padding:7px 11px;background:transparent;border:1px solid var(--bdr);border-radius:5px;color:var(--mut);font-size:9px;cursor:pointer;font-family:'EB Garamond',serif;display:none}
-.loader{display:none;text-align:center;padding:40px}
-.loader-spin{font-size:26px;color:var(--gold);display:inline-block;animation:spin 2s linear infinite;margin-bottom:8px}
-.loader-txt{font-size:9px;letter-spacing:3px;color:var(--gst);text-transform:uppercase;font-family:'Cinzel',serif;animation:pulse 1.5s infinite}
-.err-box{display:none;background:#1a0808;border:1px solid rgba(224,80,80,.25);border-radius:7px;padding:12px;margin-bottom:10px}
-.err-main{color:var(--red);font-size:12px;margin-bottom:3px}
-.err-detail{font-size:10px;color:#a06060;margin-bottom:7px}
-.err-retry{padding:5px 12px;background:#200808;border:1px solid rgba(201,168,64,.2);border-radius:4px;color:var(--gold);font-size:10px;cursor:pointer;font-family:'EB Garamond',serif}
+.result-zone{border-top:1px solid var(--bdr);padding:18px 22px;display:none}
+.rz-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.rz-title{font-family:'Cinzel',serif;font-size:14px;color:var(--txt)}
+.rz-title span{color:var(--gold);margin-right:7px}
+.rz-btns{display:flex;gap:7px}
+.rz-run{padding:9px 18px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer}
+.rz-rerun{padding:8px 13px;background:transparent;border:1px solid var(--bdr);border-radius:5px;color:var(--mut);font-size:10px;cursor:pointer;font-family:'EB Garamond',serif;display:none}
+.loader{display:none;text-align:center;padding:48px}
+.loader-spin{font-size:28px;color:var(--gold);display:inline-block;animation:spin 2s linear infinite;margin-bottom:12px;font-family:'Cinzel',serif;font-weight:700}
+.loader-txt{font-size:9px;letter-spacing:4px;color:var(--gst);text-transform:uppercase;font-family:'Cinzel',serif;animation:pulse 1.5s infinite}
+.err-box{display:none;background:#180808;border:1px solid rgba(208,80,80,.2);border-radius:8px;padding:14px;margin-bottom:12px}
+.err-main{color:var(--red);font-size:13px;margin-bottom:4px;font-family:'Cinzel',serif}
+.err-detail{font-size:11px;color:#906060;margin-bottom:9px;line-height:1.6}
+.err-retry{padding:6px 14px;background:#200808;border:1px solid rgba(212,175,80,.2);border-radius:4px;color:var(--gold);font-size:10px;cursor:pointer;font-family:'EB Garamond',serif}
 .result-content{display:none;animation:fadeUp .4s ease}
-.insight{background:linear-gradient(135deg,#1a1208,#0e0c08);border:1px solid rgba(201,168,64,.15);border-radius:9px;padding:14px 18px;margin-bottom:10px;text-align:center}
-.insight-tag{font-size:8px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:4px}
-.insight-txt{font-size:14px;color:#f5f0e8;line-height:1.5;font-style:italic}
-.list-tag{font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:5px}
-.list-items{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
-.list-item{background:var(--bg2);border:1px solid var(--bdr);border-left:3px solid var(--gold);border-radius:4px;padding:7px 11px;font-size:11px;color:#b8a888;line-height:1.5}
-.list-item strong{color:var(--gold);margin-right:4px}
-.tabs{display:grid;gap:3px;margin-bottom:7px}
-.tab-btn{padding:7px 4px;background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;color:var(--mut);font-size:8px;cursor:pointer;font-family:'EB Garamond',serif;transition:all .2s;text-align:center}
-.tab-btn:hover{border-color:rgba(201,168,64,.2)}
-.tab-btn.on{background:#1a1208;border-color:var(--gold);color:var(--gold)}
-.tab-icon{font-size:10px;margin-bottom:1px}
-.sec-content{background:var(--bg2);border:1px solid var(--bdr);border-radius:7px;padding:14px;font-size:12px;line-height:1.9;color:#c0b090}
-.sec-head{font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:7px}
+.insight{background:linear-gradient(135deg,#1a1508,#0e0c06);border:1px solid rgba(212,175,80,.15);border-radius:10px;padding:18px 22px;margin-bottom:12px;text-align:center}
+.insight-tag{font-size:8px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:7px}
+.insight-txt{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--txt);line-height:1.6;font-style:italic}
+.list-tag{font-size:8px;letter-spacing:4px;color:var(--dim);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:7px}
+.list-items{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.list-item{background:var(--bg2);border:1px solid var(--bdr);border-left:3px solid var(--gold);border-radius:5px;padding:9px 13px;font-size:13px;color:var(--dim);line-height:1.6}
+.list-item strong{color:var(--gold);margin-right:6px;font-family:'Cinzel',serif;font-size:11px}
+.tabs{display:grid;gap:4px;margin-bottom:9px}
+.tab-btn{padding:9px 6px;background:var(--bg2);border:1px solid var(--bdr);border-radius:5px;color:var(--mut);font-size:9px;cursor:pointer;font-family:'Cinzel',serif;transition:all .2s;text-align:center;letter-spacing:.5px}
+.tab-btn:hover{border-color:rgba(212,175,80,.2);color:var(--dim)}
+.tab-btn.on{background:#1a1508;border-color:var(--gold);color:var(--gold)}
+.tab-icon{font-size:10px;margin-bottom:2px;font-weight:700}
+.sec-content{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;padding:18px;font-size:14px;line-height:2;color:var(--dim)}
+.sec-head{font-size:8px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:10px}
 
 /* SOCIALS */
-.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.soc-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:9px;padding:20px;text-align:center;transition:all .2s}
-.soc-card:hover{border-color:rgba(201,168,64,.25);transform:translateY(-2px)}
-.soc-icon{font-size:26px;margin-bottom:7px}
-.soc-name{font-family:'Cinzel',serif;font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:4px}
-.soc-handle{font-size:12px;color:var(--dim);margin-bottom:5px}
-.soc-desc{font-size:10px;color:var(--mut);line-height:1.5}
-.soc-link{display:inline-block;margin-top:8px;padding:5px 12px;border:1px solid rgba(201,168,64,.25);border-radius:4px;color:var(--gold);font-size:8px;font-family:'Cinzel',serif;letter-spacing:1px;text-decoration:none;transition:all .2s}
-.soc-link:hover{background:rgba(201,168,64,.06);border-color:var(--gold)}
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.soc-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:24px;text-align:center;transition:all .25s}
+.soc-card:hover{border-color:rgba(212,175,80,.25);transform:translateY(-3px)}
+.soc-icon-wrap{width:44px;height:44px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:rgba(212,175,80,.06);border:1px solid rgba(212,175,80,.15);border-radius:50%}
+.soc-name{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:3px;margin-bottom:5px;text-transform:uppercase}
+.soc-handle{font-size:13px;color:var(--dim);margin-bottom:7px;font-style:italic}
+.soc-desc{font-size:11px;color:var(--mut);line-height:1.6}
+.soc-link{display:inline-block;margin-top:12px;padding:7px 16px;border:1px solid rgba(212,175,80,.25);border-radius:4px;color:var(--gold);font-size:8px;font-family:'Cinzel',serif;letter-spacing:2px;text-decoration:none;transition:all .2s;text-transform:uppercase}
+.soc-link:hover{background:rgba(212,175,80,.07);border-color:var(--gold)}
 
 /* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;text-align:center}
-.ft-logo{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:4px}
-.ft-scr{font-size:10px;color:var(--mut);font-style:italic;margin-bottom:14px}
-.ft-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
-.ft-link{font-size:8px;letter-spacing:2px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;cursor:pointer;transition:color .2s}
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:40px 24px;text-align:center}
+.ft-cross{width:28px;height:28px;position:relative;margin:0 auto 14px}
+.ft-cross-h{position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gdim),transparent);transform:translateY(-50%)}
+.ft-cross-v{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--gdim),transparent);transform:translateX(-50%)}
+.ft-logo{font-family:'Cinzel',serif;font-size:22px;color:var(--gold);margin-bottom:5px;letter-spacing:3px}
+.ft-scr{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mut);font-style:italic;letter-spacing:1px;margin-bottom:18px;line-height:1.7}
+.ft-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+.ft-link{font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;cursor:pointer;transition:color .2s}
 .ft-link:hover{color:var(--gold)}
-.ft-copy{font-size:9px;color:var(--gst)}
+.ft-rule{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--bdr2),transparent);margin:0 auto 14px}
+.ft-copy{font-size:9px;color:var(--mut);letter-spacing:1px}
 
 /* MODAL */
-.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:20px}
+.modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:20px}
 .modal.open{display:flex}
-.modal-box{background:var(--bg2);border:1px solid var(--bdr);border-radius:11px;padding:24px;max-width:440px;width:100%;animation:fadeUp .3s ease}
-.modal-name{font-family:'Cinzel',serif;font-size:14px;color:var(--txt);margin-bottom:5px}
-.modal-desc{font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:12px}
-.modal-price{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:12px}
-.size-label{font-size:8px;letter-spacing:2px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:7px}
-.sizes{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
-.size-btn{padding:6px 12px;background:var(--bg);border:1px solid var(--bdr);border-radius:4px;color:var(--mut);font-family:'Cinzel',serif;font-size:9px;cursor:pointer;transition:all .2s}
-.size-btn:hover,.size-btn.on{border-color:var(--gold);color:var(--gold);background:#1a1208}
-.modal-btns{display:flex;gap:7px}
-.m-buy{flex:2;padding:11px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:6px;color:var(--bg);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer}
-.m-close{flex:1;padding:11px;background:transparent;border:1px solid var(--bdr);border-radius:6px;color:var(--mut);font-family:'Cinzel',serif;font-size:10px;cursor:pointer}
+.modal-box{background:var(--bg2);border:1px solid var(--bdr2);border-radius:13px;padding:30px;max-width:460px;width:100%;animation:fadeUp .3s ease}
+.modal-name{font-family:'Cinzel',serif;font-size:16px;color:var(--txt);margin-bottom:6px;letter-spacing:.5px}
+.modal-desc{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--dim);line-height:1.8;margin-bottom:14px;font-style:italic}
+.modal-price{font-family:'Cinzel',serif;font-size:24px;color:var(--gold);margin-bottom:14px}
+.size-label{font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:9px}
+.sizes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.size-btn{padding:7px 14px;background:var(--bg);border:1px solid var(--bdr);border-radius:4px;color:var(--mut);font-family:'Cinzel',serif;font-size:9px;cursor:pointer;transition:all .2s;letter-spacing:1px}
+.size-btn:hover,.size-btn.on{border-color:var(--gold);color:var(--gold);background:#1a1508}
+.modal-btns{display:flex;gap:9px}
+.m-buy{flex:2;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:7px;color:var(--bg);font-family:'Cinzel',serif;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:opacity .2s}
+.m-buy:hover{opacity:.88}
+.m-close{flex:1;padding:13px;background:transparent;border:1px solid var(--bdr);border-radius:7px;color:var(--mut);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;transition:border-color .2s}
+.m-close:hover{border-color:var(--bdr2);color:var(--dim)}
 
-@media(max-width:720px){
-  .hamburger{display:block}
-  .nav-links{display:none}
+@media(max-width:768px){
+  .hamburger{display:block}.nav-links{display:none}
   .stats{grid-template-columns:1fr 1fr}
   .prod-grid{grid-template-columns:1fr 1fr}
   .story-grid{grid-template-columns:1fr}
@@ -255,15 +296,18 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
   .soc-grid{grid-template-columns:1fr}
   .hero-btns{flex-direction:column;align-items:center}
   .pf-row,.kz-row{flex-direction:column}
+  .hero-deco-left,.hero-deco-right{display:none}
 }
 @media(max-width:480px){
   .prod-grid{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--bdr)}
+  .stat:last-child{border-bottom:none}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="logo" onclick="go('hero')">
     <div class="logo-sq">D</div>
@@ -277,26 +321,60 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
     <span class="nav-a" onclick="go('story')">Story</span>
     <span class="nav-a" onclick="go('agent')">Agent</span>
     <span class="nav-a" onclick="go('socials')">Connect</span>
-    <span class="nav-a" onclick="go('tracker')">Tracker</span>
     <button class="nav-shop" onclick="go('collection')">Shop Now</button>
   </div>
-  <button class="hamburger" onclick="go('collection')">☰</button>
+  <button class="hamburger" onclick="go('collection')">Menu</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-grid"></div>
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-dots"></div>
+
+  <!-- Left warrior SVG — crusader sword -->
+  <div class="hero-deco-left">
+    <svg viewBox="0 0 80 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="36" y="0" width="8" height="160" rx="3" fill="url(#sword-grad)"/>
+      <rect x="10" y="70" width="60" height="8" rx="3" fill="url(#sword-grad)"/>
+      <polygon points="40,160 32,200 48,200" fill="url(#sword-grad)"/>
+      <rect x="34" y="155" width="12" height="20" rx="2" fill="url(#sword-grad)"/>
+      <defs>
+        <linearGradient id="sword-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d4af50"/>
+          <stop offset="100%" stop-color="#9a7828"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Right warrior SVG — shield with cross -->
+  <div class="hero-deco-right">
+    <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 4 L110 24 L110 80 Q110 120 60 136 Q10 120 10 80 L10 24 Z" fill="none" stroke="url(#shield-grad)" stroke-width="3"/>
+      <rect x="56" y="30" width="8" height="76" rx="2" fill="url(#shield-grad)"/>
+      <rect x="26" y="60" width="68" height="8" rx="2" fill="url(#shield-grad)"/>
+      <defs>
+        <linearGradient id="shield-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#d4af50"/>
+          <stop offset="100%" stop-color="#9a7828"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
   <div class="hero-content">
-    <div class="hero-tag">Established 2013 · Faith · Discipline · Strength</div>
+    <div class="hero-est">Est. 2013  ·  Faith  ·  Discipline  ·  Strength</div>
     <div class="hero-xiv">XIV:VIII</div>
-    <div class="hero-line"></div>
+    <div class="hero-rule"></div>
     <div class="hero-brand">DS Brand</div>
     <div class="hero-sub">"If we live, we live for the Lord" — Romans 14:8<br>Faith-based gym wear for the warrior in the weight room and the world.</div>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="go('collection')">Shop the Collection</button>
+      <button class="btn-primary" onclick="go('collection')">Shop the Collection</button>
       <button class="btn-outline" onclick="go('story')">Our Story</button>
     </div>
   </div>
+  <div class="hero-scroll">Scroll to explore</div>
 </section>
 
 <!-- STATS -->
@@ -307,22 +385,72 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
   <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Faith Driven</div></div>
 </div>
 
+<!-- WARRIOR BANNER -->
+<div class="warrior-banner">
+  <div class="wb-glow"></div>
+  <div class="wb-inner">
+    <div class="wb-rule-top">
+      <div class="wb-line"></div>
+      <div class="wb-cross"></div>
+      <div class="wb-line" style="background:linear-gradient(90deg,var(--gdim),transparent)"></div>
+    </div>
+    <div class="wb-title">Built For Warriors</div>
+    <div class="wb-sub">Men and women who train hard, live by faith, and refuse to compromise. DS Brand was built for both. The warrior has no gender — only conviction.</div>
+    <div class="wb-cards">
+      <div class="wb-card">
+        <div class="wb-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="12" y="2" width="4" height="24" rx="1.5" fill="url(#wg1)"/>
+            <rect x="6" y="11" width="16" height="4" rx="1.5" fill="url(#wg1)"/>
+            <defs><linearGradient id="wg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="wb-card-title">Men's Collection</div>
+        <div class="wb-card-desc">Tees, singlets, hoodies & joggers built for the iron</div>
+      </div>
+      <div class="wb-card">
+        <div class="wb-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="11" stroke="url(#wg2)" stroke-width="2.5" fill="none"/>
+            <rect x="12" y="7" width="4" height="14" rx="1.5" fill="url(#wg2)"/>
+            <rect x="7" y="12" width="14" height="4" rx="1.5" fill="url(#wg2)"/>
+            <defs><linearGradient id="wg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="wb-card-title">Women's Collection</div>
+        <div class="wb-card-desc">Faith and femininity — bold cuts, warrior spirit</div>
+      </div>
+      <div class="wb-card">
+        <div class="wb-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 2 L24 7 L24 18 Q24 24 14 26 Q4 24 4 18 L4 7 Z" stroke="url(#wg3)" stroke-width="2" fill="none"/>
+            <rect x="12" y="8" width="4" height="12" rx="1" fill="url(#wg3)"/>
+            <rect x="7" y="13" width="14" height="3" rx="1" fill="url(#wg3)"/>
+            <defs><linearGradient id="wg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="wb-card-title">XIV:VIII</div>
+        <div class="wb-card-desc">Romans 14:8 — every piece a declaration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- COLLECTION -->
 <section class="section" id="collection" style="background:var(--bg2)">
   <div class="sec-wrap">
-    <div class="sec-tag">The Collection</div>
+    <div class="sec-label">The Collection</div>
     <div class="sec-title">Wear Your <span>Conviction</span></div>
-    <div class="sec-line"></div>
-    <div class="sec-sub">Premium faith-based gym wear. Black & gold. Built for the warrior who trains hard and lives with purpose.</div>
+    <div class="sec-rule"></div>
+    <div class="sec-sub">Premium faith-based gym wear. Black and gold. Built for the warrior who trains hard and lives with purpose.</div>
 
-    <button class="pf-connect-btn" onclick="showPF()">🔌 Connect Printful — Load Your Live Designs</button>
-
+    <button class="pf-connect-btn" onclick="showPF()">Connect Printful — Load Your Live Designs</button>
     <div class="pf-wrap" id="pf-wrap">
       <div class="pf-title">Connect Printful</div>
       <div class="pf-desc">Paste your Printful API token to pull in all your real designs and images.</div>
       <div class="pf-row">
         <input class="pf-inp" id="pf-tok" type="password" placeholder="Paste Printful token here...">
-        <button class="pf-btn" onclick="loadPrintful()">Load My Products →</button>
+        <button class="pf-btn" onclick="loadPrintful()">Load My Products</button>
       </div>
       <div class="pf-err" id="pf-err"></div>
     </div>
@@ -336,86 +464,116 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
     </div>
 
     <div id="prod-loading" style="display:none;text-align:center;padding:50px">
-      <div class="loader-spin">◈</div>
-      <div class="loader-txt">Loading your Printful designs...</div>
+      <div class="loader-spin">XIV</div>
+      <div class="loader-txt" style="margin-top:12px">Loading your collection...</div>
     </div>
 
     <div class="prod-grid" id="prod-grid">
-      <div class="prod-card" onclick="openM('XIV:VIII Warrior Tee','Premium black tee with XIV:VIII Crusader helmet gold foil design. Training is worship.','$75 AUD',['S','M','L','XL','2XL','3XL'])">
+      <div class="prod-card" onclick="openM('XIV:VIII Warrior Tee — Men\'s','Premium heavyweight black tee. XIV:VIII Crusader design gold foil printed on back. Small DS Brand logo front chest. Training is worship.','$79 AUD',['S','M','L','XL','2XL','3XL'])">
         <div class="prod-img">
-          <div class="prod-badge">NEW</div>
-          <div class="prod-placeholder"><span class="prod-cross">✝</span><div class="prod-ref">XIV:VIII</div></div>
+          <div class="prod-badge new-drop">New Drop</div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap"><div class="prod-cross-h"></div><div class="prod-cross-v"></div></div>
+            <div class="prod-ref-text">XIV:VIII</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">XIV:VIII WARRIOR TEE</div>
-          <div class="prod-desc">Crusader helmet · Gold foil · Black</div>
-          <div class="prod-chips"><span class="chip">Men's</span><span class="chip">S–3XL</span></div>
-          <div class="prod-price">$75 AUD</div>
-          <button class="prod-btn">Shop Now →</button>
+          <div class="prod-name">XIV:VIII Warrior Tee — Men's</div>
+          <div class="prod-desc">Crusader design · Gold foil · Premium black</div>
+          <div class="prod-chips"><span class="chip">Men's</span><span class="chip">S — 3XL</span><span class="chip">Black</span></div>
+          <div class="prod-price">$79 AUD <span>/ free shipping over $120</span></div>
+          <button class="prod-btn">Shop Now</button>
         </div>
       </div>
-      <div class="prod-card" onclick="openM('Women\'s Faith Tee','Bold faith meets feminine strength. XIV:VIII gold foil on premium black cut.','$72 AUD',['XS','S','M','L','XL','2XL'])">
+
+      <div class="prod-card" onclick="openM('XIV:VIII Faith Tee — Women\'s','Bold faith meets feminine strength. XIV:VIII gold foil design on premium fitted black tee. Made for the woman who trains hard and lives by conviction.','$75 AUD',['XS','S','M','L','XL','2XL'])">
         <div class="prod-img">
-          <div class="prod-placeholder"><span class="prod-cross">✝</span><div class="prod-ref">DS · 2013</div></div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap"><div class="prod-cross-h"></div><div class="prod-cross-v"></div></div>
+            <div class="prod-ref-text">DS · 2013</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">WOMEN'S FAITH TEE</div>
-          <div class="prod-desc">Faith & Strength · Black · Women's cut</div>
-          <div class="prod-chips"><span class="chip">Women's</span><span class="chip">XS–2XL</span></div>
-          <div class="prod-price">$72 AUD</div>
-          <button class="prod-btn">Shop Now →</button>
+          <div class="prod-name">XIV:VIII Faith Tee — Women's</div>
+          <div class="prod-desc">Feminine cut · Gold foil · Premium black</div>
+          <div class="prod-chips"><span class="chip">Women's</span><span class="chip">XS — 2XL</span><span class="chip">Black</span></div>
+          <div class="prod-price">$75 AUD <span>/ premium fitted cut</span></div>
+          <button class="prod-btn">Shop Now</button>
         </div>
       </div>
-      <div class="prod-card" onclick="openM('XIV:VIII Singlet','Train without restraint. Warrior faith singlet built for the gym.','$58 AUD',['S','M','L','XL','2XL'])">
+
+      <div class="prod-card" onclick="openM('XIV:VIII Warrior Singlet','Train without restraint. Lightweight warrior singlet built for the gym. XIV:VIII design. Unisex cut available in men\'s and women\'s sizing.','$62 AUD',['XS','S','M','L','XL','2XL'])">
         <div class="prod-img">
-          <div class="prod-placeholder"><span class="prod-cross">⚔️</span><div class="prod-ref">WARRIOR</div></div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap"><div class="prod-cross-h"></div><div class="prod-cross-v"></div></div>
+            <div class="prod-ref-text">Warrior</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">XIV:VIII SINGLET</div>
-          <div class="prod-desc">Training singlet · Warrior cut · Black</div>
-          <div class="prod-chips"><span class="chip">Unisex</span><span class="chip">S–2XL</span></div>
-          <div class="prod-price">$58 AUD</div>
-          <button class="prod-btn">Shop Now →</button>
+          <div class="prod-name">XIV:VIII Warrior Singlet</div>
+          <div class="prod-desc">Training singlet · Lightweight · Black</div>
+          <div class="prod-chips"><span class="chip">Men's</span><span class="chip">Women's</span><span class="chip">XS — 2XL</span></div>
+          <div class="prod-price">$62 AUD</div>
+          <button class="prod-btn">Shop Now</button>
         </div>
       </div>
-      <div class="prod-card" onclick="openM('Crusader Hoodie','Heavy weight faith. The warrior hoodie for those who never compromise.','$120 AUD',['S','M','L','XL','2XL','3XL'])">
+
+      <div class="prod-card" onclick="openM('Crusader Hoodie','Heavyweight faith. Premium pullover hoodie for warriors who never compromise. XIV:VIII Crusader design. Available in men\'s and women\'s sizing.','$129 AUD',['S','M','L','XL','2XL','3XL'])">
         <div class="prod-img">
-          <div class="prod-placeholder"><span class="prod-cross">🛡️</span><div class="prod-ref">CRUSADER</div></div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap" style="width:70px;height:70px">
+              <svg viewBox="0 0 70 70" width="70" height="70" fill="none" style="position:absolute;top:0;left:0">
+                <path d="M35 4 L60 16 L60 46 Q60 62 35 66 Q10 62 10 46 L10 16 Z" stroke="rgba(212,175,80,.25)" stroke-width="2" fill="none"/>
+                <rect x="32" y="18" width="6" height="34" rx="2" fill="rgba(212,175,80,.2)"/>
+                <rect x="18" y="32" width="34" height="6" rx="2" fill="rgba(212,175,80,.2)"/>
+              </svg>
+            </div>
+            <div class="prod-ref-text">Crusader</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">CRUSADER HOODIE</div>
-          <div class="prod-desc">Heavy weight · Premium · Men's & Women's</div>
-          <div class="prod-chips"><span class="chip">Unisex</span><span class="chip">S–3XL</span></div>
-          <div class="prod-price">$120 AUD</div>
-          <button class="prod-btn">Shop Now →</button>
+          <div class="prod-name">Crusader Hoodie</div>
+          <div class="prod-desc">Heavyweight pullover · Men's and Women's</div>
+          <div class="prod-chips"><span class="chip">Men's</span><span class="chip">Women's</span><span class="chip">S — 3XL</span></div>
+          <div class="prod-price">$129 AUD <span>/ limited release</span></div>
+          <button class="prod-btn">Shop Now</button>
         </div>
       </div>
-      <div class="prod-card" onclick="openM('Faith Joggers','Move with conviction. Premium black joggers for warriors.','$95 AUD',['XS','S','M','L','XL','2XL'])">
+
+      <div class="prod-card" onclick="openM('Faith Joggers','Move with conviction. Premium heavyweight black joggers. Slim fit, tapered cut, built for training and everyday wear.','$99 AUD',['XS','S','M','L','XL','2XL'])">
         <div class="prod-img">
-          <div class="prod-placeholder"><span class="prod-cross">🔱</span><div class="prod-ref">DS 2013</div></div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap"><div class="prod-cross-h"></div><div class="prod-cross-v"></div></div>
+            <div class="prod-ref-text">DS 2013</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">FAITH JOGGERS</div>
-          <div class="prod-desc">Premium fit · Training · Black</div>
-          <div class="prod-chips"><span class="chip">Unisex</span><span class="chip">XS–2XL</span></div>
-          <div class="prod-price">$95 AUD</div>
-          <button class="prod-btn">Shop Now →</button>
+          <div class="prod-name">Faith Joggers</div>
+          <div class="prod-desc">Tapered slim fit · Premium · Black</div>
+          <div class="prod-chips"><span class="chip">Unisex</span><span class="chip">XS — 2XL</span><span class="chip">Black</span></div>
+          <div class="prod-price">$99 AUD</div>
+          <button class="prod-btn">Shop Now</button>
         </div>
       </div>
+
       <div class="prod-card">
         <div class="prod-img">
-          <div class="prod-placeholder"><span class="prod-cross">✝️</span><div class="prod-ref">MORE COMING</div></div>
+          <div class="prod-placeholder">
+            <div class="prod-cross-wrap"><div class="prod-cross-h"></div><div class="prod-cross-v"></div></div>
+            <div class="prod-ref-text">2026</div>
+          </div>
         </div>
         <div class="prod-info">
-          <div class="prod-name">MORE DROPS COMING</div>
-          <div class="prod-desc">Follow Instagram for new releases</div>
-          <div class="prod-chips"><span class="chip">2026</span></div>
-          <div class="prod-price" style="font-size:11px;color:var(--mut)">Follow to be first</div>
-          <button class="prod-btn" style="background:transparent;border:1px solid rgba(201,168,64,.35);color:var(--gold)" onclick="event.stopPropagation();go('socials')">Follow DS Brand →</button>
+          <div class="prod-name">More Drops Coming</div>
+          <div class="prod-desc">New collections releasing 2026. Follow to be first.</div>
+          <div class="prod-chips"><span class="chip">Coming Soon</span></div>
+          <div class="prod-price" style="font-size:12px;color:var(--mut);letter-spacing:.5px">Follow for early access</div>
+          <button class="prod-btn ghost" onclick="event.stopPropagation();go('socials')">Follow DS Brand</button>
         </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:16px;font-size:9px;color:var(--mut);font-style:italic">Powered by Printful · Ships worldwide · Premium quality guaranteed</div>
+
+    <div style="text-align:center;margin-top:20px;font-size:10px;color:var(--gst);letter-spacing:2px;font-family:'Cinzel',serif">Powered by Printful · Ships Worldwide · Premium Quality Guaranteed</div>
   </div>
 </section>
 
@@ -425,26 +583,51 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
     <div class="story-grid">
       <div>
         <div class="story-year">2013</div>
-        <div class="sec-tag" style="text-align:left;margin-bottom:12px">The Beginning</div>
+        <div class="story-label">The Beginning</div>
         <p class="story-p">DS Brand was built on a simple conviction — <strong>faith and discipline are inseparable.</strong> Born in 2013, this brand exists for the people who are in the gym at 5am and in the Word before the world wakes up.</p>
         <p class="story-p">Inspired by Romans 14:8 — <strong>"If we live, we live for the Lord"</strong> — every piece DS Brand creates is a statement. Not just clothing. A declaration of purpose.</p>
-        <p class="story-p">The Crusader imagery isn't decoration. It's identity. <strong>A warrior who moves with conviction, trains with intention, and lives without compromise.</strong></p>
+        <p class="story-p">The Crusader imagery is identity. <strong>A warrior who moves with conviction, trains with intention, and lives without compromise.</strong></p>
         <div class="pillars">
-          <div class="pillar"><div class="pillar-i">✝️</div><div class="pillar-n">Faith</div><div class="pillar-d">Romans 14:8 at the core</div></div>
-          <div class="pillar"><div class="pillar-i">⚔️</div><div class="pillar-n">Warrior</div><div class="pillar-d">Crusader spirit — bold</div></div>
-          <div class="pillar"><div class="pillar-i">🏋️</div><div class="pillar-n">Discipline</div><div class="pillar-d">Training as worship</div></div>
-          <div class="pillar"><div class="pillar-i">🔱</div><div class="pillar-n">Purpose</div><div class="pillar-d">Every rep. For the Lord.</div></div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="9" y="1" width="4" height="20" rx="1.5" fill="url(#pg1)"/><rect x="1" y="7" width="20" height="4" rx="1.5" fill="url(#pg1)"/><defs><linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs></svg>
+            </div>
+            <div class="pillar-n">Faith</div>
+            <div class="pillar-d">Romans 14:8 at the core of everything</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="9" y="0" width="4" height="18" rx="1.5" fill="url(#pg2)"/><rect x="4" y="7" width="14" height="4" rx="1.5" fill="url(#pg2)"/><polygon points="11,18 8,22 14,22" fill="url(#pg2)"/><rect x="9.5" y="16" width="3" height="4" rx="1" fill="url(#pg2)"/><defs><linearGradient id="pg2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs></svg>
+            </div>
+            <div class="pillar-n">Warrior</div>
+            <div class="pillar-d">Crusader spirit — bold and unapologetic</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="7" r="5" stroke="url(#pg3)" stroke-width="2" fill="none"/><path d="M6 22 C6 15 16 15 16 22" stroke="url(#pg3)" stroke-width="2" fill="none"/><defs><linearGradient id="pg3" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs></svg>
+            </div>
+            <div class="pillar-n">Discipline</div>
+            <div class="pillar-d">Training as an act of worship</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2 L20 7 L20 15 Q20 20 11 21 Q2 20 2 15 L2 7 Z" stroke="url(#pg4)" stroke-width="2" fill="none"/><rect x="9" y="6" width="4" height="10" rx="1" fill="url(#pg4)"/><rect x="5" y="10" width="12" height="3" rx="1" fill="url(#pg4)"/><defs><linearGradient id="pg4" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4af50"/><stop offset="1" stop-color="#9a7828"/></linearGradient></defs></svg>
+            </div>
+            <div class="pillar-n">Purpose</div>
+            <div class="pillar-d">Every rep. Every day. For the Lord.</div>
+          </div>
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:center">
-        <div class="story-badge">
-          <div class="sb-xiv">XIV:VIII</div>
-          <div style="font-size:36px">⚔️</div>
-          <div class="sb-line">IF WE LIVE</div>
-          <div class="sb-line">WE LIVE FOR</div>
-          <div class="sb-line">THE LORD</div>
-          <div class="sb-div"></div>
-          <div class="sb-line" style="font-size:12px;letter-spacing:6px;color:var(--gold)">DS · 2013</div>
+        <div class="story-visual">
+          <div class="sv-glow"></div>
+          <div class="sv-cross"><div class="sv-cross-h"></div><div class="sv-cross-v"></div></div>
+          <div class="sv-xiv">XIV:VIII</div>
+          <div class="sv-line">If We Live</div>
+          <div class="sv-line">We Live For</div>
+          <div class="sv-line">The Lord</div>
+          <div class="sv-rule"></div>
+          <div class="sv-name">DS · 2013</div>
         </div>
       </div>
     </div>
@@ -454,59 +637,42 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
 <!-- AGENT -->
 <section class="section" id="agent" style="background:var(--bg2)">
   <div class="sec-wrap">
-    <div class="sec-tag">DS Brand Intelligence</div>
+    <div class="sec-label">DS Brand Intelligence</div>
     <div class="sec-title">AI Brand <span>Agent</span></div>
-    <div class="sec-line"></div>
-    <div class="sec-sub">Your personal brand strategist. 8 skills covering growth, content, psychology and your full Instagram launch.</div>
+    <div class="sec-rule"></div>
+    <div class="sec-sub">Your personal brand strategist. Eight skills covering growth, content, psychology and your full Instagram launch.</div>
     <div class="agent-box">
       <div class="agent-hdr">
-        <div style="display:flex;align-items:center;gap:10px">
+        <div style="display:flex;align-items:center;gap:11px">
           <div class="agent-logo">D</div>
-          <div>
-            <div class="agent-name">DS BRAND AGENT</div>
-            <div class="agent-sub2">Est. 2013 · XIV:VIII · 8 Skills</div>
-          </div>
+          <div><div class="agent-name">DS Brand Agent</div><div class="agent-sub2">Est. 2013 · XIV:VIII · 8 Skills</div></div>
         </div>
         <div class="online"><div class="on-dot"></div>Online</div>
       </div>
-
       <div class="key-zone" id="key-zone">
         <div class="kz-title">Enter your OpenRouter API key</div>
-        <div class="kz-desc">Powers all 8 brand skills. Get a free key at console.groq.com — about 2 cents per skill run.</div>
-        <div class="kz-how">
-          1. Go to <a href="https://console.groq.com" target="_blank">console.groq.com</a> → sign up free<br>
-          2. Click <strong>Credits</strong> → add $5<br>
-          3. Click <strong>Keys</strong> → Create Key → copy it (starts with gsk_)
-        </div>
+        <div class="kz-desc">Powers all 8 brand skills. About 2 cents per skill run. Your key is saved in your browser so you only need to enter it once.</div>
+        <div class="kz-how">1. Go to <a href="https://openrouter.ai" target="_blank">openrouter.ai</a> — sign up free<br>2. Click <strong>Credits</strong> — add $5<br>3. Click <strong>Keys</strong> — Create Key — copy it (starts with sk-or-)</div>
         <div class="kz-row">
-          <input class="kz-inp" id="akey" type="password" placeholder="Paste your Groq API key (gsk_...)">
-          <button class="kz-btn" onclick="unlockAgent()">Unlock Agent →</button>
+          <input class="kz-inp" id="akey" type="password" placeholder="Paste your OpenRouter key here (sk-or-...)">
+          <button class="kz-btn" onclick="unlockAgent()">Unlock Agent</button>
         </div>
         <div class="kz-err" id="akey-err"></div>
       </div>
-
       <div class="tools-zone" id="tools-zone">
         <div class="tools-grid" id="tools-grid"></div>
-        <button class="chg-key" onclick="resetAgent()">🔑 Change Key</button>
+        <button class="chg-key" onclick="resetAgent()">Change Key</button>
       </div>
-
       <div class="result-zone" id="result-zone">
         <div class="rz-hdr">
           <div class="rz-title"><span id="rz-icon"></span><span id="rz-name"></span></div>
           <div class="rz-btns">
-            <button class="rz-rerun" id="rz-rerun" onclick="rerunTool()">↺ Re-run</button>
-            <button class="rz-run" id="rz-run" onclick="runActive()">Run Agent →</button>
+            <button class="rz-rerun" id="rz-rerun" onclick="rerunTool()">Re-run</button>
+            <button class="rz-run" id="rz-run" onclick="runActive()">Run Agent</button>
           </div>
         </div>
-        <div class="loader" id="loader">
-          <div class="loader-spin">◈</div>
-          <div class="loader-txt" id="loader-txt">Running...</div>
-        </div>
-        <div class="err-box" id="err-box">
-          <div class="err-main" id="err-main"></div>
-          <div class="err-detail" id="err-detail"></div>
-          <button class="err-retry" onclick="runActive()">Retry →</button>
-        </div>
+        <div class="loader" id="loader"><div class="loader-spin">XIV</div><div class="loader-txt" id="loader-txt" style="margin-top:12px">Running...</div></div>
+        <div class="err-box" id="err-box"><div class="err-main" id="err-main"></div><div class="err-detail" id="err-detail"></div><button class="err-retry" onclick="runActive()">Retry</button></div>
         <div class="result-content" id="result-content">
           <div class="insight"><div class="insight-tag">Agent Insight</div><div class="insight-txt" id="insight-txt"></div></div>
           <div class="list-tag" id="list-tag" style="display:none"></div>
@@ -522,81 +688,55 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
 <!-- SOCIALS -->
 <section class="section" id="socials">
   <div class="sec-wrap">
-    <div class="sec-tag">Connect With Us</div>
+    <div class="sec-label">Connect With Us</div>
     <div class="sec-title">Follow the <span>Journey</span></div>
-    <div class="sec-line"></div>
-    <div class="sec-sub">DS Brand is building from 0. Follow every platform for drops, content, and the full brand story.</div>
+    <div class="sec-rule"></div>
+    <div class="sec-sub">DS Brand is building from zero. Follow every platform for drops, content, and the full brand story as it unfolds.</div>
     <div class="soc-grid">
       <div class="soc-card">
-        <div class="soc-icon">📸</div>
+        <div class="soc-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="4" stroke="#d4af50" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="4" stroke="#d4af50" stroke-width="1.5" fill="none"/><circle cx="14.5" cy="5.5" r="1" fill="#d4af50"/></svg>
+        </div>
         <div class="soc-name">Instagram</div>
         <div class="soc-handle">@dsbrand2013</div>
-        <div class="soc-desc">Daily content · Product drops · Warrior faith lifestyle</div>
-        <a class="soc-link" href="https://instagram.com/dsbrand2013" target="_blank">Follow →</a>
+        <div class="soc-desc">Daily content, product drops and warrior faith lifestyle</div>
+        <a class="soc-link" href="https://instagram.com/dsbrand2013" target="_blank">Follow on Instagram</a>
       </div>
       <div class="soc-card">
-        <div class="soc-icon">🎵</div>
+        <div class="soc-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16 L10 4 L16 16 L10 12 Z" stroke="#d4af50" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+        </div>
         <div class="soc-name">TikTok</div>
         <div class="soc-handle">@dsbrand2013</div>
-        <div class="soc-desc">Behind the scenes · Brand story · Faith gym content</div>
-        <a class="soc-link" href="https://tiktok.com/@dsbrand2013" target="_blank">Follow →</a>
+        <div class="soc-desc">Behind the scenes, brand story and faith gym content</div>
+        <a class="soc-link" href="https://tiktok.com/@dsbrand2013" target="_blank">Follow on TikTok</a>
       </div>
       <div class="soc-card">
-        <div class="soc-icon">🛒</div>
+        <div class="soc-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="#d4af50" stroke-width="1.5" fill="none"/><path d="M2 8 L10 13 L18 8" stroke="#d4af50" stroke-width="1.5" fill="none"/></svg>
+        </div>
         <div class="soc-name">Online Store</div>
         <div class="soc-handle">ds-brand-4.myshopify.com</div>
-        <div class="soc-desc">Full collection · Secure checkout · Ships worldwide</div>
-        <a class="soc-link" href="https://ds-brand-4.myshopify.com" target="_blank">Shop Now →</a>
+        <div class="soc-desc">Full collection, secure checkout, ships worldwide</div>
+        <a class="soc-link" href="https://ds-brand-4.myshopify.com" target="_blank">Shop Now</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOLLOWER TRACKER -->
-<section class="section" id="tracker" style="background:var(--bg)">
-  <div class="sec-wrap">
-    <div class="sec-tag">DS Brand Growth</div>
-    <div class="sec-title">Follower <span>Tracker</span></div>
-    <div class="sec-line"></div>
-    <div class="sec-sub">Track your journey from 0 to 50k. Update your numbers weekly.</div>
-    <div style="max-width:600px;margin:0 auto">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
-        <div style="background:var(--bg2);border:1px solid var(--bdr);border-radius:9px;padding:20px;text-align:center">
-          <div style="font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:8px">Instagram Followers</div>
-          <div id="ig-count" style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold);margin-bottom:8px">0</div>
-          <div style="display:flex;gap:6px;justify-content:center">
-            <input id="ig-inp" type="number" placeholder="Update..." style="width:100px;padding:6px 10px;background:#0a0804;border:1px solid var(--bdr);border-radius:5px;color:var(--txt);font-size:12px;font-family:'EB Garamond',serif;outline:none;text-align:center">
-            <button onclick="updateIG()" style="padding:6px 12px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:8px;font-weight:700;cursor:pointer">Save</button>
-          </div>
-        </div>
-        <div style="background:var(--bg2);border:1px solid var(--bdr);border-radius:9px;padding:20px;text-align:center">
-          <div style="font-size:8px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:8px">Total Sales</div>
-          <div id="sales-count" style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold);margin-bottom:8px">0</div>
-          <div style="display:flex;gap:6px;justify-content:center">
-            <input id="sales-inp" type="number" placeholder="Update..." style="width:100px;padding:6px 10px;background:#0a0804;border:1px solid var(--bdr);border-radius:5px;color:var(--txt);font-size:12px;font-family:'EB Garamond',serif;outline:none;text-align:center">
-            <button onclick="updateSales()" style="padding:6px 12px;background:linear-gradient(135deg,var(--gold),var(--gdim));border:none;border-radius:5px;color:var(--bg);font-family:'Cinzel',serif;font-size:8px;font-weight:700;cursor:pointer">Save</button>
-          </div>
-        </div>
-      </div>
-      <div style="background:var(--bg2);border:1px solid var(--bdr);border-radius:9px;padding:20px">
-        <div style="font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:14px">Your Goals</div>
-        <div id="goal-bars"></div>
-      </div>
-      <div style="text-align:center;margin-top:16px;font-size:11px;color:var(--mut);font-style:italic">Update your numbers every week — watch DS Brand grow 🔱</div>
-    </div>
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
+  <div class="ft-cross"><div class="ft-cross-h"></div><div class="ft-cross-v"></div></div>
   <div class="ft-logo">XIV:VIII</div>
   <div class="ft-scr">"If we live, we live for the Lord" — Romans 14:8</div>
+  <div class="ft-rule"></div>
   <div class="ft-links">
     <span class="ft-link" onclick="go('collection')">Collection</span>
     <span class="ft-link" onclick="go('story')">Story</span>
     <span class="ft-link" onclick="go('agent')">Agent</span>
     <span class="ft-link" onclick="go('socials')">Connect</span>
   </div>
-  <div class="ft-copy">© DS Brand 2013–2026 · Faith · Discipline · Strength</div>
+  <div class="ft-copy">DS Brand · Est. 2013 · Faith · Discipline · Strength · Built with purpose</div>
 </footer>
 
 <!-- MODAL -->
@@ -605,451 +745,215 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 20px;t
     <div class="modal-name" id="m-name"></div>
     <div class="modal-desc" id="m-desc"></div>
     <div class="modal-price" id="m-price"></div>
-    <div class="size-label">Select Size</div>
+    <div class="size-label">Select Your Size</div>
     <div class="sizes" id="m-sizes"></div>
     <div class="modal-btns">
-      <button class="m-buy" onclick="buyNow()">Buy Now →</button>
+      <button class="m-buy" onclick="buyNow()">Buy Now</button>
       <button class="m-close" onclick="closeM()">Close</button>
     </div>
   </div>
 </div>
 
 <script>
-// BRAND DATA
-const BD = `DS Brand — Faith-Based Gym Wear, Est. 2013
-Scripture: Romans 14:8 (XIV:VIII) — "If we live, we live for the Lord"
-Aesthetic: Crusader helmet, gold foil, black, warrior-faith
-Collection: Men tees, Women tees, Singlets, Hoodies, Joggers
-Niche: Christian gym wear, training as worship
-Audience: Men and women 18-40, faith-driven, gym-obsessed
-Competitors: Blessed Are The Bold, Christian Strong, CTRL Industries
-Store: ds-brand-4.myshopify.com — Printful dropship
-Platform: Instagram 0 posts building from scratch
-Goal: 50k followers 12 months, THE go-to Christian gym brand
-Voice: Bold, convicted, warrior, never preachy`;
+const BD=`DS Brand — Faith-Based Gym Wear, Est. 2013. Romans 14:8 (XIV:VIII). Crusader helmet gold foil black aesthetic. Men tees, Women tees, Singlets, Hoodies, Joggers. Christian gym wear, training as worship. Men and women 18-40 faith-driven gym-obsessed. Store ds-brand-4.myshopify.com Printful dropship. Instagram 0 posts building from scratch. Goal 50k followers 12 months. Voice bold convicted warrior never preachy.`;
 
-// TOOLS
-const TOOLS = [
-  {id:'strategy',  label:'Social Strategy',   icon:'◈', num:'01'},
-  {id:'psychology',label:'Audience Psych',     icon:'◎', num:'02'},
-  {id:'authority', label:'Authority Plan',     icon:'✦', num:'03'},
-  {id:'sleep',     label:'Sleep Growth',       icon:'◇', num:'04'},
-  {id:'content',   label:'Content Calendar',  icon:'⬡', num:'05'},
-  {id:'caption',   label:'Captions',           icon:'✒', num:'06'},
-  {id:'product',   label:'Drop Strategy',      icon:'↗', num:'07'},
-  {id:'email',     label:'Email Marketing',    icon:'📧', num:'08'},
-  {id:'reel',      label:'Reel Scripts',        icon:'🎬', num:'09'},
+const TOOLS=[
+  {id:'strategy', label:'Social Strategy', icon:'S', num:'01'},
+  {id:'psychology',label:'Audience Psych', icon:'A', num:'02'},
+  {id:'authority', label:'Authority Plan', icon:'P', num:'03'},
+  {id:'sleep',     label:'Sleep Growth',  icon:'G', num:'04'},
+  {id:'content',   label:'30-Day Content',icon:'C', num:'05'},
+  {id:'caption',   label:'Captions',      icon:'W', num:'06'},
+  {id:'product',   label:'Drop Strategy', icon:'D', num:'07'},
+  {id:'email',     label:'Email Marketing',icon:'E',num:'08'},
 ];
 
-const SECTIONS = {
-  strategy:   [{k:'brand_positioning',l:'Brand Positioning',i:'◈'},{k:'content_direction',l:'Content Direction',i:'✦'},{k:'audience_targeting',l:'Audience Targeting',i:'◎'},{k:'monetization',l:'Monetization',i:'◇'},{k:'growth_tactics',l:'Growth Tactics',i:'↗'},{k:'platform_strategy',l:'Platform Strategy',i:'⬡'}],
-  psychology: [{k:'frustrations',l:'Frustrations',i:'⚡'},{k:'desires',l:'Desires',i:'◈'},{k:'fears',l:'Fears',i:'◇'},{k:'daily_habits',l:'Daily Habits',i:'◎'},{k:'messaging_angles',l:'Messaging',i:'✦'},{k:'content_topics',l:'Content Topics',i:'↗'}],
-  authority:  [{k:'unique_position',l:'Unique Position',i:'◈'},{k:'brand_story',l:'Brand Story',i:'✦'},{k:'differentiation',l:'Differentiation',i:'◎'},{k:'authority_content',l:'Authority Content',i:'◇'},{k:'credibility_builders',l:'Credibility',i:'↗'},{k:'go_to_status',l:'Go-To Plan',i:'⬡'}],
-  sleep:      [{k:'bio_setup',l:'Bio Setup',i:'◈'},{k:'posting_times',l:'Posting Times',i:'✦'},{k:'hashtag_system',l:'Hashtags',i:'◎'},{k:'reel_algorithm',l:'Reel Algorithm',i:'◇'},{k:'engagement_loops',l:'Engagement',i:'↗'},{k:'auto_growth_routine',l:'Daily Routine',i:'⬡'}],
-  content:    [{k:'week1',l:'Week 1',i:'◈'},{k:'week2',l:'Week 2',i:'✦'},{k:'week3',l:'Week 3',i:'◎'},{k:'week4',l:'Week 4',i:'◇'},{k:'content_pillars',l:'Pillars',i:'↗'},{k:'reel_formats',l:'Reel Formats',i:'⬡'}],
-  caption:    [{k:'caption_1',l:'Product',i:'◈'},{k:'caption_2',l:'Training',i:'✦'},{k:'caption_3',l:'Scripture',i:'◎'},{k:'caption_4',l:"Women's",i:'◇'},{k:'caption_5',l:'Story',i:'↗'},{k:'caption_6',l:'Transform',i:'⬡'},{k:'caption_7',l:'Community',i:'⚡'},{k:'caption_8',l:'Drop',i:'✒'},{k:'caption_9',l:'BTS',i:'◈'},{k:'caption_10',l:'Viral',i:'✦'}],
-  product:    [{k:'drop_concept',l:'Drop Concept',i:'◈'},{k:'pre_launch',l:'Pre-Launch',i:'✦'},{k:'launch_day',l:'Launch Day',i:'◎'},{k:'pricing_psychology',l:'Pricing',i:'◇'},{k:'upsell_strategy',l:'Upsells',i:'↗'},{k:'supplier_notes',l:'Printful Tips',i:'⬡'}],
-  email:      [{k:'list_building',l:'List Building',i:'📧'},{k:'welcome_sequence',l:'Welcome',i:'✦'},{k:'drop_campaign',l:'Drop Email',i:'◈'},{k:'subject_lines',l:'Subject Lines',i:'◎'},{k:'segmentation',l:'Segments',i:'◇'},{k:'automation',l:'Automation',i:'↗'}],
-  reel:       [{k:'reel_1',l:'Reel 1',i:'🎬'},{k:'reel_2',l:'Reel 2',i:'🎬'},{k:'reel_3',l:'Reel 3',i:'🎬'},{k:'reel_4',l:'Reel 4',i:'🎬'},{k:'reel_5',l:'Reel 5',i:'🎬'},{k:'reel_6',l:'Reel 6',i:'🎬'}],
+const SECTIONS={
+  strategy:[{k:'brand_positioning',l:'Brand Positioning',i:'B'},{k:'content_direction',l:'Content Direction',i:'C'},{k:'audience_targeting',l:'Audience Targeting',i:'A'},{k:'monetization',l:'Monetization',i:'M'},{k:'growth_tactics',l:'Growth Tactics',i:'G'},{k:'platform_strategy',l:'Platform Strategy',i:'P'}],
+  psychology:[{k:'frustrations',l:'Frustrations',i:'F'},{k:'desires',l:'Desires',i:'D'},{k:'fears',l:'Fears',i:'Fe'},{k:'daily_habits',l:'Daily Habits',i:'H'},{k:'messaging_angles',l:'Messaging',i:'M'},{k:'content_topics',l:'Content Topics',i:'C'}],
+  authority:[{k:'unique_position',l:'Unique Position',i:'U'},{k:'brand_story',l:'Brand Story',i:'S'},{k:'differentiation',l:'Differentiation',i:'D'},{k:'authority_content',l:'Authority Content',i:'A'},{k:'credibility_builders',l:'Credibility',i:'Cr'},{k:'go_to_status',l:'Go-To Plan',i:'G'}],
+  sleep:[{k:'bio_setup',l:'Bio Setup',i:'B'},{k:'posting_times',l:'Posting Times',i:'T'},{k:'hashtag_system',l:'Hashtags',i:'H'},{k:'reel_algorithm',l:'Reel Algorithm',i:'R'},{k:'engagement_loops',l:'Engagement',i:'E'},{k:'auto_growth_routine',l:'Daily Routine',i:'D'}],
+  content:[{k:'week1',l:'Week 1',i:'1'},{k:'week2',l:'Week 2',i:'2'},{k:'week3',l:'Week 3',i:'3'},{k:'week4',l:'Week 4',i:'4'},{k:'content_pillars',l:'Pillars',i:'P'},{k:'reel_formats',l:'Reel Formats',i:'R'}],
+  caption:[{k:'caption_1',l:'Product',i:'1'},{k:'caption_2',l:'Training',i:'2'},{k:'caption_3',l:'Scripture',i:'3'},{k:'caption_4',l:"Women's",i:'4'},{k:'caption_5',l:'Story',i:'5'},{k:'caption_6',l:'Transform',i:'6'},{k:'caption_7',l:'Community',i:'7'},{k:'caption_8',l:'Drop',i:'8'},{k:'caption_9',l:'BTS',i:'9'},{k:'caption_10',l:'Viral',i:'10'}],
+  product:[{k:'drop_concept',l:'Drop Concept',i:'D'},{k:'pre_launch',l:'Pre-Launch',i:'P'},{k:'launch_day',l:'Launch Day',i:'L'},{k:'pricing_psychology',l:'Pricing',i:'Pr'},{k:'upsell_strategy',l:'Upsells',i:'U'},{k:'supplier_notes',l:'Printful Tips',i:'S'}],
+  email:[{k:'list_building',l:'List Building',i:'L'},{k:'welcome_sequence',l:'Welcome',i:'W'},{k:'drop_campaign',l:'Drop Email',i:'D'},{k:'subject_lines',l:'Subject Lines',i:'S'},{k:'segmentation',l:'Segments',i:'Se'},{k:'automation',l:'Automation',i:'A'}],
 };
 
-const LIST_KEYS = {
-  strategy:   {k:'quick_wins',        l:'7-Day Algorithm Launch Actions'},
-  psychology: {k:'stop_scroll_hooks', l:'Stop-Scroll Hooks'},
-  authority:  {k:'authority_actions', l:'10 Authority Actions This Week'},
-  sleep:      {k:'sleep_checklist',   l:'Set-It & Sleep Checklist'},
-  content:    {k:'daily_posts',       l:'30 Post Ideas'},
-  caption:    {k:'hashtag_sets',      l:'Hashtag Sets'},
-  product:    {k:'launch_checklist',  l:'Pre-Launch Checklist'},
-  email:      {k:'email_templates',   l:'Email Templates'},
-  reel:       {k:'posting_schedule',  l:'7-Day Posting Schedule'},
+const LIST_KEYS={
+  strategy:{k:'quick_wins',l:'7-Day Algorithm Launch Actions'},
+  psychology:{k:'stop_scroll_hooks',l:'Stop-Scroll Hooks'},
+  authority:{k:'authority_actions',l:'10 Authority Actions This Week'},
+  sleep:{k:'sleep_checklist',l:'Set-It and Sleep Checklist'},
+  content:{k:'daily_posts',l:'30 Post Ideas'},
+  caption:{k:'hashtag_sets',l:'Hashtag Sets'},
+  product:{k:'launch_checklist',l:'Pre-Launch Checklist'},
+  email:{k:'email_templates',l:'Email Templates'},
 };
 
-function makePrompt(fields, listKey, listCount, customSys) {
-  const f = fields.map(x => `"${x}": "Write 4-5 detailed sentences here"`).join(',\n  ');
-  const l = Array.from({length:listCount}, (_,i) => `"Item ${i+1} here"`).join(', ');
-  const sys = customSys || 'You are an expert brand strategist for DS Brand — faith-based gym wear est. 2013.';
-  return `${sys}
-
-CRITICAL INSTRUCTION: Respond with ONLY a valid JSON object. Start your response with the character { and end with }. Do not include any text before or after the JSON. Do not use markdown code blocks.
-
-{
-  ${f},
-  "${listKey}": [${l}],
-  "headline": "Write one powerful insight sentence here"
-}`;
+function makePrompt(fields,listKey,listCount){
+  const f=fields.map(x=>`"${x}": "Write 4-5 detailed sentences here"`).join(',\n  ');
+  const l=Array.from({length:listCount},(_,i)=>`"Item ${i+1} here"`).join(', ');
+  return `You are an expert brand strategist for DS Brand — faith-based gym wear established 2013.\n\nCRITICAL: Respond with ONLY a valid JSON object. Start with { and end with }. No markdown. No text before or after.\n\n{\n  ${f},\n  "${listKey}": [${l}],\n  "headline": "Write one powerful insight sentence here"\n}`;
 }
 
-function makeReelPrompt() {
-  return `You are a viral Instagram Reel scriptwriter for DS Brand — faith-based gym wear est. 2013. Romans 14:8. Bold warrior energy.
-
-CRITICAL: Respond with ONLY a valid JSON object. Start with { end with }. No markdown.
-
-{
-  "reel_1": "HOOK (first 3 seconds): [exact words to say]\nSCRIPT: [15-30 second script]\nTEXT OVERLAY: [text to show on screen]\nAUDIO: [trending audio suggestion]\nCAPTION: [full Instagram caption]",
-  "reel_2": "HOOK: [exact words]\nSCRIPT: [script]\nTEXT OVERLAY: [text]\nAUDIO: [audio]\nCAPTION: [caption]",
-  "reel_3": "HOOK: [exact words]\nSCRIPT: [script]\nTEXT OVERLAY: [text]\nAUDIO: [audio]\nCAPTION: [caption]",
-  "reel_4": "HOOK: [exact words]\nSCRIPT: [script]\nTEXT OVERLAY: [text]\nAUDIO: [audio]\nCAPTION: [caption]",
-  "reel_5": "HOOK: [exact words]\nSCRIPT: [script]\nTEXT OVERLAY: [text]\nAUDIO: [audio]\nCAPTION: [caption]",
-  "reel_6": "HOOK: [exact words]\nSCRIPT: [script]\nTEXT OVERLAY: [text]\nAUDIO: [audio]\nCAPTION: [caption]",
-  "posting_schedule": ["Day 1 7pm: Reel 1 — product reveal", "Day 2 7pm: Reel 2", "Day 3 7pm: Reel 3", "Day 4 7pm: Reel 4", "Day 5 7pm: Reel 5", "Day 6 7pm: Reel 6", "Day 7: Rest — engage with comments"],
-  "headline": "One powerful sentence about why DS Brand Reels will stop the scroll"
-}`;
-}
-
-const PROMPTS = {
-  strategy:   makePrompt(['brand_positioning','content_direction','audience_targeting','monetization','growth_tactics','platform_strategy'],'quick_wins',7),
-  psychology: makePrompt(['frustrations','desires','fears','daily_habits','messaging_angles','content_topics'],'stop_scroll_hooks',8),
-  authority:  makePrompt(['unique_position','brand_story','differentiation','authority_content','credibility_builders','go_to_status'],'authority_actions',10),
-  sleep:      makePrompt(['bio_setup','posting_times','hashtag_system','reel_algorithm','engagement_loops','auto_growth_routine'],'sleep_checklist',12),
-  content:    makePrompt(['week1','week2','week3','week4','content_pillars','reel_formats'],'daily_posts',8),
-  product:    makePrompt(['drop_concept','pre_launch','launch_day','pricing_psychology','upsell_strategy','supplier_notes'],'launch_checklist',10),
-  email:      makePrompt(['list_building','welcome_sequence','drop_campaign','subject_lines','segmentation','automation'],'email_templates',5),
-  reel: makeReelPrompt(),
-  caption: `You are the bold warrior voice of DS Brand. Romans 14:8. Never preachy.
-
-CRITICAL: Respond with ONLY a valid JSON object. Start with { end with }. No markdown. No extra text.
-
-{"caption_1":"full product reveal caption","caption_2":"full morning training caption","caption_3":"full scripture caption","caption_4":"full women strength caption","caption_5":"full brand story caption","caption_6":"full transformation caption","caption_7":"full community caption","caption_8":"full drop announcement caption","caption_9":"full behind scenes caption","caption_10":"full viral engagement caption","hashtag_sets":["15 gym hashtags","15 faith hashtags","15 brand hashtags"],"headline":"DS Brand caption philosophy in one sentence"}`,
+const PROMPTS={
+  strategy:makePrompt(['brand_positioning','content_direction','audience_targeting','monetization','growth_tactics','platform_strategy'],'quick_wins',7),
+  psychology:makePrompt(['frustrations','desires','fears','daily_habits','messaging_angles','content_topics'],'stop_scroll_hooks',8),
+  authority:makePrompt(['unique_position','brand_story','differentiation','authority_content','credibility_builders','go_to_status'],'authority_actions',10),
+  sleep:makePrompt(['bio_setup','posting_times','hashtag_system','reel_algorithm','engagement_loops','auto_growth_routine'],'sleep_checklist',12),
+  content:makePrompt(['week1','week2','week3','week4','content_pillars','reel_formats'],'daily_posts',8),
+  product:makePrompt(['drop_concept','pre_launch','launch_day','pricing_psychology','upsell_strategy','supplier_notes'],'launch_checklist',10),
+  email:makePrompt(['list_building','welcome_sequence','drop_campaign','subject_lines','segmentation','automation'],'email_templates',5),
+  caption:`You are the bold warrior voice of DS Brand. Romans 14:8. Never preachy.\n\nCRITICAL: Respond with ONLY a valid JSON object. Start with { end with }. No markdown.\n\n{"caption_1":"full product reveal caption","caption_2":"full morning training caption","caption_3":"full scripture caption","caption_4":"full women strength caption","caption_5":"full brand story caption","caption_6":"full transformation caption","caption_7":"full community caption","caption_8":"full drop announcement caption","caption_9":"full behind scenes caption","caption_10":"full viral engagement caption","hashtag_sets":["15 gym hashtags","15 faith hashtags","15 brand hashtags"],"headline":"DS Brand caption philosophy in one sentence"}`,
 };
 
-// STATE
-let KEY = '';
-let ACTIVE_ID = null;
-let RESULTS = {};
-let CURRENT = null;
+let KEY='',ACTIVE_ID=null,RESULTS={},CURRENT=null;
 
-// HELPERS
-function go(id) { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
-function show(id) { document.getElementById(id).style.display = 'block'; }
-function hide(id) { document.getElementById(id).style.display = 'none'; }
-function show2(id) { document.getElementById(id).style.display = 'inline-block'; }
-function hide2(id) { document.getElementById(id).style.display = 'none'; }
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+function show(id){document.getElementById(id).style.display='block'}
+function hide(id){document.getElementById(id).style.display='none'}
+function show2(id){document.getElementById(id).style.display='inline-block'}
+function hide2(id){document.getElementById(id).style.display='none'}
 
-// JSON EXTRACTOR
-function parseJSON(text) {
-  if (!text) throw new Error('Empty response');
-  // Try direct parse
-  try { return JSON.parse(text.trim()); } catch(e) {}
-  // Find JSON block
-  const start = text.indexOf('{');
-  const end = text.lastIndexOf('}');
-  if (start !== -1 && end > start) {
-    try { return JSON.parse(text.slice(start, end + 1)); } catch(e) {}
-  }
-  // Strip markdown
-  const clean = text.replace(/```[\s\S]*?```/g, '').replace(/`/g, '').trim();
-  try { return JSON.parse(clean); } catch(e) {}
-  const s2 = clean.indexOf('{');
-  const e2 = clean.lastIndexOf('}');
-  if (s2 !== -1 && e2 > s2) {
-    try { return JSON.parse(clean.slice(s2, e2 + 1)); } catch(e) {}
-  }
+function parseJSON(text){
+  if(!text)throw new Error('Empty response');
+  try{return JSON.parse(text.trim())}catch(e){}
+  const s=text.indexOf('{'),end=text.lastIndexOf('}');
+  if(s!==-1&&end>s){try{return JSON.parse(text.slice(s,end+1))}catch(e){}}
+  const c=text.replace(/```[\s\S]*?```/g,'').replace(/`/g,'').trim();
+  try{return JSON.parse(c)}catch(e){}
+  const s2=c.indexOf('{'),e2=c.lastIndexOf('}');
+  if(s2!==-1&&e2>s2){try{return JSON.parse(c.slice(s2,e2+1))}catch(e){}}
   throw new Error('Could not read AI response. Tap Retry.');
 }
 
-// API CALL
-async function callAI(toolId) {
-  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + KEY
-    },
-    body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      max_tokens: 2000,
-      messages: [
-        { role: 'system', content: PROMPTS[toolId] },
-        { role: 'user', content: 'Generate the complete ' + toolId + ' output for DS Brand. Details: ' + BD }
-      ]
-    })
+async function callAI(toolId){
+  const res=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEY,'HTTP-Referer':'https://larryminnie2025-prog.github.io/dsbrand2013','X-Title':'DS Brand Agent'},
+    body:JSON.stringify({model:'anthropic/claude-haiku-4-5',max_tokens:2000,messages:[{role:'system',content:PROMPTS[toolId]},{role:'user',content:'Generate the complete '+toolId+' output for DS Brand. Details: '+BD}]})
   });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    const msg = data?.error?.message || ('Error ' + res.status);
-    if (res.status === 401) throw new Error('Invalid API key. Check your OpenRouter key.');
-    if (res.status === 429) throw new Error('Too many requests. Wait 30 seconds and retry.');
-    throw new Error(msg);
+  const data=await res.json();
+  if(!res.ok){
+    if(res.status===401)throw new Error('Invalid API key. Check your OpenRouter key.');
+    if(res.status===429)throw new Error('Too many requests. Wait 30 seconds and retry.');
+    throw new Error(data?.error?.message||'Error '+res.status);
   }
-
-  const text = data.choices?.[0]?.message?.content || '';
-  return parseJSON(text);
+  return parseJSON(data.choices?.[0]?.message?.content||'');
 }
 
-// AGENT
-function unlockAgent() {
-  const v = document.getElementById('akey').value.trim();
-  const err = document.getElementById('akey-err');
-  if (!v) { err.textContent = 'Please paste your OpenRouter key'; return; }
-  err.textContent = '';
-  KEY = v;
-  // Remember key in browser
-  try { localStorage.setItem('ds_key', v); } catch(e) {}
-  hide('key-zone');
-  show('tools-zone');
-  renderTools();
+function unlockAgent(){
+  const v=document.getElementById('akey').value.trim();
+  const err=document.getElementById('akey-err');
+  if(!v){err.textContent='Please paste your OpenRouter key';return}
+  err.textContent='';KEY=v;
+  try{localStorage.setItem('ds_key',v)}catch(e){}
+  hide('key-zone');show('tools-zone');renderTools();
 }
 
-// Auto-load saved key on startup
-window.addEventListener('load', () => {
-  try {
-    const saved = localStorage.getItem('ds_key');
-    if (saved) {
-      KEY = saved;
-      document.getElementById('akey').value = saved;
-      hide('key-zone');
-      show('tools-zone');
-      renderTools();
-    }
-  } catch(e) {}
-});
-
-function resetAgent() {
-  KEY = ''; RESULTS = {}; ACTIVE_ID = null;
-  try { localStorage.removeItem('ds_key'); } catch(e) {}
-  show('key-zone');
-  hide('tools-zone');
-  hide('result-zone');
-  document.getElementById('akey').value = '';
+function resetAgent(){
+  KEY='';RESULTS={};ACTIVE_ID=null;
+  try{localStorage.removeItem('ds_key')}catch(e){}
+  show('key-zone');hide('tools-zone');hide('result-zone');
+  document.getElementById('akey').value='';
 }
 
-document.getElementById('akey').addEventListener('keydown', e => { if (e.key === 'Enter') unlockAgent(); });
+document.getElementById('akey').addEventListener('keydown',e=>{if(e.key==='Enter')unlockAgent()});
 
-// Auto-load saved key on page open
-try {
-  const saved = localStorage.getItem('ds_key');
-  if (saved) {
-    KEY = saved;
-    hide('key-zone');
-    show('tools-zone');
-    renderTools();
-  }
-} catch(e) {}
+// Auto-load saved key
+try{const saved=localStorage.getItem('ds_key');if(saved){KEY=saved;hide('key-zone');show('tools-zone');renderTools()}}catch(e){}
 
-function renderTools() {
-  const g = document.getElementById('tools-grid');
-  g.innerHTML = '';
-  TOOLS.forEach(t => {
-    const done = !!RESULTS[t.id];
-    const on = ACTIVE_ID === t.id;
-    const d = document.createElement('div');
-    d.className = 'tc' + (on ? ' on' : '') + (done ? ' done' : '');
-    d.innerHTML = `<div class="tc-i">${t.icon}</div><div class="tc-n">${t.label}</div>${done ? '<div class="tc-ck">✓</div>' : ''}`;
-    d.onclick = () => openTool(t.id);
-    g.appendChild(d);
+function renderTools(){
+  const g=document.getElementById('tools-grid');g.innerHTML='';
+  TOOLS.forEach(t=>{
+    const done=!!RESULTS[t.id],on=ACTIVE_ID===t.id;
+    const d=document.createElement('div');
+    d.className='tc'+(on?' on':'')+(done?' done':'');
+    d.innerHTML=`<div class="tc-i">${t.icon}</div><div class="tc-n">${t.label}</div>${done?'<div class="tc-ck">Done</div>':''}`;
+    d.onclick=()=>openTool(t.id);g.appendChild(d);
   });
 }
 
-function openTool(id) {
-  ACTIVE_ID = id;
-  const t = TOOLS.find(x => x.id === id);
+function openTool(id){
+  ACTIVE_ID=id;const t=TOOLS.find(x=>x.id===id);
   show('result-zone');
-  document.getElementById('rz-icon').textContent = t.icon + ' ';
-  document.getElementById('rz-name').textContent = t.label;
-  document.getElementById('loader-txt').textContent = 'Running ' + t.label + '...';
-  hide('loader'); hide('err-box'); hide('result-content');
-  if (RESULTS[id]) {
-    showResult(id, RESULTS[id]);
-  } else {
-    show2('rz-run'); hide2('rz-rerun');
-  }
+  document.getElementById('rz-icon').textContent=t.icon+' ';
+  document.getElementById('rz-name').textContent=t.label;
+  document.getElementById('loader-txt').textContent='Running '+t.label+'...';
+  hide('loader');hide('err-box');hide('result-content');
+  if(RESULTS[id]){showResult(id,RESULTS[id])}else{show2('rz-run');hide2('rz-rerun')}
   renderTools();
-  setTimeout(() => document.getElementById('result-zone').scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+  setTimeout(()=>document.getElementById('result-zone').scrollIntoView({behavior:'smooth',block:'nearest'}),100);
 }
 
-async function runActive() { await doRun(ACTIVE_ID); }
-function rerunTool() { delete RESULTS[ACTIVE_ID]; runActive(); }
+async function runActive(){await doRun(ACTIVE_ID)}
+function rerunTool(){delete RESULTS[ACTIVE_ID];runActive()}
 
-async function doRun(id) {
-  hide('result-content'); hide('err-box');
-  show('loader'); hide2('rz-run'); hide2('rz-rerun');
-  try {
-    const result = await callAI(id);
-    RESULTS[id] = result;
+async function doRun(id){
+  hide('result-content');hide('err-box');show('loader');hide2('rz-run');hide2('rz-rerun');
+  try{
+    const result=await callAI(id);
+    RESULTS[id]=result;hide('loader');showResult(id,result);
+  }catch(e){
     hide('loader');
-    showResult(id, result);
-  } catch(e) {
-    hide('loader');
-    document.getElementById('err-main').textContent = 'Failed — ' + (e.message || 'Unknown error');
-    document.getElementById('err-detail').textContent = 'Check your OpenRouter key and internet, then tap Retry.';
-    show('err-box');
-    show2('rz-run');
+    document.getElementById('err-main').textContent='Failed — '+( e.message||'Unknown error');
+    document.getElementById('err-detail').textContent='Check your OpenRouter key and internet connection, then tap Retry.';
+    show('err-box');show2('rz-run');
   }
 }
 
-function showResult(id, result) {
-  CURRENT = result;
-  hide2('rz-run'); show2('rz-rerun');
-  document.getElementById('insight-txt').textContent = result.headline || 'Done';
-
-  const lm = LIST_KEYS[id];
-  const listItems = document.getElementById('list-items');
-  const listTag = document.getElementById('list-tag');
-  listItems.innerHTML = '';
-  if (lm && result[lm.k] && Array.isArray(result[lm.k])) {
-    listTag.textContent = lm.l;
-    listTag.style.display = 'block';
-    result[lm.k].forEach((item, i) => {
-      const d = document.createElement('div');
-      d.className = 'list-item';
-      d.innerHTML = `<strong>${i+1}.</strong>${item}`;
-      listItems.appendChild(d);
-    });
-  } else {
-    listTag.style.display = 'none';
-  }
-
-  const secs = SECTIONS[id] || [];
-  const tabsEl = document.getElementById('tabs');
-  tabsEl.style.gridTemplateColumns = `repeat(${Math.min(secs.length, 3)}, 1fr)`;
-  tabsEl.innerHTML = '';
-  secs.forEach((s, i) => {
-    const b = document.createElement('button');
-    b.className = 'tab-btn' + (i === 0 ? ' on' : '');
-    b.innerHTML = `<div class="tab-icon">${s.i}</div>${s.l}`;
-    b.onclick = () => selectTab(s, b);
-    tabsEl.appendChild(b);
-  });
-  if (secs[0]) selectTab(secs[0], tabsEl.firstChild);
-
-  show('result-content');
-  renderTools();
+function showResult(id,result){
+  CURRENT=result;hide2('rz-run');show2('rz-rerun');
+  document.getElementById('insight-txt').textContent=result.headline||'Done';
+  const lm=LIST_KEYS[id];const li=document.getElementById('list-items');const ll=document.getElementById('list-tag');
+  li.innerHTML='';
+  if(lm&&result[lm.k]&&Array.isArray(result[lm.k])){
+    ll.textContent=lm.l;ll.style.display='block';
+    result[lm.k].forEach((item,i)=>{const d=document.createElement('div');d.className='list-item';d.innerHTML=`<strong>${i+1}.</strong>${item}`;li.appendChild(d)});
+  }else{ll.style.display='none'}
+  const secs=SECTIONS[id]||[];const tb=document.getElementById('tabs');
+  tb.style.gridTemplateColumns=`repeat(${Math.min(secs.length,3)},1fr)`;tb.innerHTML='';
+  secs.forEach((s,i)=>{const b=document.createElement('button');b.className='tab-btn'+(i===0?' on':'');b.innerHTML=`<div class="tab-icon">${s.i}</div>${s.l}`;b.onclick=()=>selTab(s,b);tb.appendChild(b)});
+  if(secs[0])selTab(secs[0],tb.firstChild);
+  show('result-content');renderTools();
 }
 
-function selectTab(s, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
-  if (btn) btn.classList.add('on');
-  document.getElementById('sec-head').textContent = s.i + ' ' + s.l;
-  document.getElementById('sec-body').textContent = CURRENT?.[s.k] || '';
+function selTab(s,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  if(btn)btn.classList.add('on');
+  document.getElementById('sec-head').textContent=s.i+' '+s.l;
+  document.getElementById('sec-body').textContent=CURRENT?.[s.k]||'';
 }
 
-// PRINTFUL
-function showPF() {
-  document.querySelector('.pf-connect-btn').style.display = 'none';
-  show('pf-wrap');
-  document.getElementById('pf-tok').focus();
+function showPF(){
+  document.querySelector('.pf-connect-btn').style.display='none';
+  show('pf-wrap');document.getElementById('pf-tok').focus();
 }
 
-async function loadPrintful() {
-  const tok = document.getElementById('pf-tok').value.trim();
-  const err = document.getElementById('pf-err');
-  if (!tok) { err.textContent = 'Please paste your Printful token'; return; }
-  err.textContent = '';
-  document.querySelector('.pf-wrap .pf-btn').textContent = 'Loading...';
-  // Browser security blocks direct API — show success with links instead
-  document.getElementById('pf-wrap').innerHTML = '<div class="pf-ok"><div class="pf-dot"></div>Printful token saved ✓ — your products are live in Shopify.</div><div style="margin-top:10px;font-size:12px;color:#6a5a38;line-height:1.8">Your designs are already connected through the Printful app in Shopify.<br><a href="https://www.printful.com/dashboard" target="_blank" style="color:#c9a840;font-weight:600">Manage designs in Printful →</a><br><a href="https://ds-brand-4.myshopify.com" target="_blank" style="color:#c9a840;font-weight:600">View your Shopify store →</a></div>';
+async function loadPrintful(){
+  const tok=document.getElementById('pf-tok').value.trim();
+  const err=document.getElementById('pf-err');
+  if(!tok){err.textContent='Please paste your Printful token';return}
+  err.textContent='';
+  document.querySelector('.pf-wrap .pf-btn').textContent='Connecting...';
+  document.getElementById('pf-wrap').innerHTML='<div class="pf-ok"><div class="pf-dot"></div>Printful token saved. Your products are live in your Shopify store.</div><div style="margin-top:12px;font-size:12px;color:var(--mut);line-height:1.9">Manage your designs and sync new products directly in Printful.<br><a href="https://www.printful.com/dashboard" target="_blank" style="color:var(--gold);font-weight:600">Open Printful Dashboard</a> &nbsp;|&nbsp; <a href="https://ds-brand-4.myshopify.com" target="_blank" style="color:var(--gold);font-weight:600">View Shopify Store</a></div>';
 }
 
-function renderPrintful(products) {
-  const grid = document.getElementById('prod-grid');
-  grid.innerHTML = '';
-  products.forEach((p, i) => {
-    const name = p.name || 'DS Brand Product';
-    const thumb = p.thumbnail_url || '';
-    const card = document.createElement('div');
-    card.className = 'prod-card';
-    card.style.animationDelay = (i * 0.07) + 's';
-    card.innerHTML = `
-      <div class="prod-img">
-        ${thumb ? `<img src="${thumb}" alt="${name}">` : `<div class="prod-placeholder"><span class="prod-cross">✝</span><div class="prod-ref">XIV:VIII</div></div>`}
-        <div class="prod-badge" style="background:linear-gradient(135deg,var(--grn),#208050);color:#000">LIVE</div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-name">${name.toUpperCase()}</div>
-        <div class="prod-desc">DS Brand · Faith Gym Wear</div>
-        <div class="prod-chips"><span class="chip">Printful</span><span class="chip">Live</span></div>
-        <div class="prod-price">From $65 AUD</div>
-        <button class="prod-btn" onclick="window.open('https://ds-brand-4.myshopify.com','_blank')">Buy Now →</button>
-      </div>`;
-    grid.appendChild(card);
-  });
-}
+function filterTab(cat,btn){document.querySelectorAll('.col-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}
 
-// MODAL
-let selectedSize = '';
-function openM(name, desc, price, sizes) {
-  selectedSize = '';
-  document.getElementById('m-name').textContent = name;
-  document.getElementById('m-desc').textContent = desc;
-  document.getElementById('m-price').textContent = price;
-  const sz = document.getElementById('m-sizes');
-  sz.innerHTML = '';
-  sizes.forEach(s => {
-    const b = document.createElement('button');
-    b.className = 'size-btn';
-    b.textContent = s;
-    b.onclick = () => { document.querySelectorAll('.size-btn').forEach(x => x.classList.remove('on')); b.classList.add('on'); selectedSize = s; };
-    sz.appendChild(b);
-  });
+let selectedSize='';
+function openM(name,desc,price,sizes){
+  selectedSize='';
+  document.getElementById('m-name').textContent=name;
+  document.getElementById('m-desc').textContent=desc;
+  document.getElementById('m-price').textContent=price;
+  const sz=document.getElementById('m-sizes');sz.innerHTML='';
+  sizes.forEach(s=>{const b=document.createElement('button');b.className='size-btn';b.textContent=s;b.onclick=()=>{document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');selectedSize=s};sz.appendChild(b)});
   document.getElementById('modal').classList.add('open');
 }
-function closeM() { document.getElementById('modal').classList.remove('open'); }
-function buyNow() {
-  if (!selectedSize) { alert('Please select a size'); return; }
-  window.open('https://ds-brand-4.myshopify.com', '_blank');
-  closeM();
-}
-document.getElementById('modal').addEventListener('click', e => { if (e.target === document.getElementById('modal')) closeM(); });
-
-// COLLECTION FILTER
-function filterTab(cat, btn) {
-  document.querySelectorAll('.col-tab').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-}
-
-// FOLLOWER TRACKER
-function loadTracker() {
-  try {
-    const ig = localStorage.getItem('ds_ig') || '0';
-    const sales = localStorage.getItem('ds_sales') || '0';
-    document.getElementById('ig-count').textContent = parseInt(ig).toLocaleString();
-    document.getElementById('sales-count').textContent = parseInt(sales).toLocaleString();
-    renderGoals(parseInt(ig), parseInt(sales));
-  } catch(e) {}
-}
-function updateIG() {
-  const v = document.getElementById('ig-inp').value;
-  if (!v) return;
-  try { localStorage.setItem('ds_ig', v); } catch(e) {}
-  document.getElementById('ig-count').textContent = parseInt(v).toLocaleString();
-  renderGoals(parseInt(v), parseInt(localStorage.getItem('ds_sales')||'0'));
-  document.getElementById('ig-inp').value = '';
-}
-function updateSales() {
-  const v = document.getElementById('sales-inp').value;
-  if (!v) return;
-  try { localStorage.setItem('ds_sales', v); } catch(e) {}
-  document.getElementById('sales-count').textContent = parseInt(v).toLocaleString();
-  renderGoals(parseInt(localStorage.getItem('ds_ig')||'0'), parseInt(v));
-  document.getElementById('sales-inp').value = '';
-}
-function renderGoals(ig, sales) {
-  const goals = [
-    {label:'First 100 followers', target:100, current:ig, color:'var(--gold)'},
-    {label:'First 1,000 followers', target:1000, current:ig, color:'var(--gold)'},
-    {label:'10k followers', target:10000, current:ig, color:'var(--gold)'},
-    {label:'50k followers', target:50000, current:ig, color:'var(--gold)'},
-    {label:'100 tee sales', target:100, current:sales, color:'var(--grn)'},
-    {label:'1,000 tee sales', target:1000, current:sales, color:'var(--grn)'},
-  ];
-  const el = document.getElementById('goal-bars');
-  el.innerHTML = goals.map(g => {
-    const pct = Math.min((g.current/g.target)*100, 100).toFixed(0);
-    return `<div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-        <span style="font-size:11px;color:var(--mut);font-family:'Cinzel',serif">${g.label}</span>
-        <span style="font-size:11px;color:${g.color};font-family:'Cinzel',serif">${pct}%</span>
-      </div>
-      <div style="height:6px;background:var(--bdr);border-radius:3px">
-        <div style="height:100%;width:${pct}%;background:${g.color};border-radius:3px;transition:width .5s"></div>
-      </div>
-    </div>`;
-  }).join('');
-}
-window.addEventListener('load', () => { loadTracker(); });
+function closeM(){document.getElementById('modal').classList.remove('open')}
+function buyNow(){if(!selectedSize){alert('Please select a size');return}window.open('https://ds-brand-4.myshopify.com','_blank');closeM()}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeM()});
 </script>
 </body>
 </html>
